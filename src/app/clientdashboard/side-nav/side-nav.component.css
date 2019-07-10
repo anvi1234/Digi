@@ -1,0 +1,64 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 300px;
+
+
+}
+.navbar-brand {
+  position: relative;
+  background: url(/assets/image/logo.png);
+  width: 260px;
+  height:40px;
+  left: 15px;
+
+  background-size: contain;
+  background-repeat: no-repeat;
+
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+mat-nav-list a{
+  color:black;
+  padding-left:10px;
+
+}
+mat-nav-list i{
+  color:white;
+
+}
+span{
+  padding-left:10px;
+}
+mat-toolbar{
+background-color:black;
+ box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+
+}
+
+
+.left{
+ padding-left:650px;
+ font-size:20px;
+}
+span.name{
+  color:white;
+}
+
+
+li:hover{
+  color:gray;
+  
+  
+}

@@ -1,0 +1,56 @@
+
+
+
+.navbar{
+  background-color: black;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.navbar-brand {
+  position: relative;
+  background: url(/assets/image/logo.png);
+  width: 260px;
+  height:40px;
+  left: 15px;
+
+  background-size: contain;
+  background-repeat: no-repeat;
+
+}
+
+mat-nav-list a{
+  color:white;
+  padding-left:10px;
+
+}
+mat-nav-list i{
+  color:white;
+
+}
+span{
+  padding-left:10px;
+}
+mat-toolbar{
+  background-color: black;
+
+  color:  #E51B36;
+ font-size: 28px;
+ box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+
+}
+mat-sidenav-content{
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+
+}
+
+.left{
+ padding-left:650px;
+ font-size:20px;
+}
+span.name{
+  color:white;
+}

@@ -1,0 +1,152 @@
+
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.6/css/mdb.min.css" />
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.6/js/mdb.min.js"></script>
+<body >
+
+    <div class="img-fluid img" >
+
+<form  [formGroup]="profileform" (ngSubmit)="add()" style="color:black" >
+  <div class='container' style="padding-bottom:80px;">
+
+  <div class="row">
+  <div class="col-sm-6 offset-sm-3" style="background-color:white">
+
+
+    <h4><b>Upload Your Demo Content....</b></h4><hr style="width:490px">
+
+    <div>Choose course category  </div>
+        <div><select  formControlName="categories"  class="form-control">
+          <option value="" disabled>Choose any option</option>
+          <option *ngFor="let item of categories" [ngValue]="item.id">
+            {{ item.name }}
+          </option>
+        </select>
+      </div><br>
+
+
+      <div>Provide a name for your course</div>
+      <div><input type="text" class="form-control"  formControlName="coursename"></div><br>
+
+
+     <div>Please select you rmethod</div>
+      <div class="row">
+        <label class="md-check">
+          <input type="radio" value="Online" name="course"   formControlName="course" (click)="setradio('Online')" [checked]="true" />
+        Online
+        </label>
+
+        <label class="md-check">
+          <input type="radio" value="Offline" name="course" (click)="setradio('Offline')"  formControlName="course"/>
+      Offline
+        </label>
+      </div>
+
+      <div  *ngIf="isSelected('Online')" >Choose your file from here!<br>
+        format  pdf,video , ppt<br>
+
+<div class="row">
+
+ <!---
+        <label  for='file' class="file">upload video <i class="fa fa-upload" aria-hidden="true"></i>
+        <input class="video"   type="file" formControlName="video" id="file" style="display:none"  (change)="onFileChange($event)">
+        <input type="hidden" class="col-sm-4 offset-sm-2" name="filehidden" />
+
+      </label>
+
+
+ <label  for='file' class="file">upload pdf <i class="fa fa-upload" aria-hidden="true"></i>
+        <input class="pdf"    type="file" formControlName="pdf" id="file" style="display:none" (change)="onFileChange($event)">
+        <input type="hidden" class="col-sm-4 offset-sm-2" name="filehidden" />
+
+
+      </label>
+
+
+      <label  for='file' class="file">upload ppt <i class="fa fa-upload" aria-hidden="true"></i>
+        <input class="ppt"   type="file" id="file" style="display:none" formControlName="ppt"   (change)="onFileChange($event)">
+        <input type="hidden" class="col-sm-4 offset-sm-2" name="filehidden" />
+
+      </label>
+      </div>
+
+   ---->
+<div class="col-sm-6 ">
+
+   <div  class="col-sm-5  " >
+      <div class="btn btn-rounded aqua-gradient float-left">
+        <span><b>Choose Video</b></span>
+        <input type="file"  ng2FileSelect   [uploader]="uploader" name="video" formControlName="video" >
+        </div>
+        </div>
+        <div  class="col-sm-2  offset-sm-5 " >
+            <div class="btn btn-rounded aqua-gradient float-left">
+              <span><b>Choose PDF</b></span>
+              <input type="file"   [uploader]="uploader" name="pdf"  ng2FileSelect formControlName="pdf" ><br>
+              </div>
+              </div>
+              <div  class="col-sm-6 " >
+                  <div class="btn btn-rounded aqua-gradient float-left"  >
+                    <span><b>Choose PPT</b></span>
+                    <input type="file"    [uploader]="uploader" name="ppt" ng2FileSelect formControlName="ppt" ><br>
+
+                    </div>
+                    </div>
+                  </div>
+
+
+                </div>
+
+              </div>
+
+<div>
+       <div>Add tag for your video those increase your rating on google</div>
+
+                <div style="font-size:20px">  <b> Add tag::</b></div>
+                   <div formArrayName="addonarray">
+                      <i class="fa fa-plus-square" style="color:green;font-size:40px;" (click)="addTag()"></i>
+
+              <div class="input-group" *ngFor="let item of profileform.get('addonarray').controls;let i=index">
+
+
+                  <input  type="text" id="addon" class="form-control" [formControlName]="i">
+
+                <div class="form-group col-md-2" *ngIf="i!=0">
+                    <span class="fa fa-close" style="color:red" (click)="Deletetag(i)"></span>
+                  </div>
+
+
+                   </div></div>
+                   <br>
+
+                     <div>
+                      *Upload your resume in pdf format
+
+                       <input type="file" class="btn btn-primary" name="resume" [uploader]="uploader" ng2FileSelect formControlName="resume" style="width:50%"><br>
+                       <button class="btn btn-success"  (click)="uploader.uploadAll()"  routerLink='./submitrequest' >Submit</button>
+                      </div>
+                  </div>
+
+                </div>
+
+               </div>
+              </div>
+
+             </form>
+
+
+
+</div>
+
+
+
+             </body>
+
+
+

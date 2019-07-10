@@ -1,0 +1,76 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<div class="container-fluid">
+  <div class="row">
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <a class="navbar-brand" href="#"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div id="collapsibleNavbar">
+     <ul class="navbar-nav ">
+        <li class="nav-item ">
+          <a id="nav-link" href="#" style="color:white" routerLink="./instructor">Teach On DigiSaksham</a>
+        </li>
+         <li class="nav-item active">
+       <a href="#" class="dropdown-toggle" id="nav-link" style="color:white" data-toggle="dropdown">Courses on DigiSaksham</a>
+
+                    <ul class="dropdown-menu mega-dropdown-menu row">
+                    <li class="col-sm-4">
+                        <ul>
+                          <li class="dropdown-header">Digital Marketing</li>
+                          <li><a href="#" *ngFor="let item of digitalmarketing ">{{item}}</a></li>
+
+                          <li class="divider"></li>
+                          <li class="dropdown-header">Development</li>
+                          <li><a href="#" *ngFor="let item of  Development ">{{item}}</a></li>
+                        </ul>
+                      </li>
+                      <li class="col-sm-4">
+                        <ul>
+                          <li class="dropdown-header">Design</li>
+                          <li><a href="#" *ngFor="let item of Design">{{item}}</a></li>
+
+                          <li class="divider"></li>
+                          <li class="dropdown-header"> Business</li>
+                          <li><a href="#" *ngFor="let item of Business">{{item}}</a></li>
+
+                        </ul>
+                      </li>
+                      <li class="col-sm-4">
+                        <ul>
+                          <li class="dropdown-header">SoftwareQualiity</li>
+                          <li><a href="#" *ngFor="let item of SoftwareQualiity">{{item}}</a></li>
+
+                          <li class="divider"></li>
+                          <li class="dropdown-header"> Mathematics</li>
+                          <li><a href="#" *ngFor="let item of mathematics">{{item}}</a></li>
+
+                        </ul>
+                      </li>
+
+                </ul>
+ </li>
+
+       </ul>
+       <ng-template [ngIf]="!authservice.isAuthenticated">
+      <a  class="login-btn" mat-raised-button (click)=" openLoginDialog()" ><b>LogIn</b></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a class="signup-btn" mat-raised-button color="warn" (click)="openSignupDialog()"><b>Sign Up</b></a>
+    </ng-template>
+      <a class="signup-btn" mat-raised-button color="warn"  *ngIf="authservice.isAuthenticated" (click)="logout()"><b>logOut</b></a>
+    </div>
+       </nav>
+      </div>
+    </div>
+
+
+
+
+
+
+
+       <router-outlet></router-outlet>
+
+

@@ -1,0 +1,100 @@
+<meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.6/css/mdb.min.css" />
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.6/js/mdb.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+
+<body>
+
+
+
+
+    <form [formGroup]="myForm" (ngSubmit)=" save()">
+        <div class="row">
+
+            <div class="col-sm-8 offset-sm-2">
+        <button mat-stroked-button color="primary"   (click)="addNewmodule()"> Add Course Heading</button>
+      <div formArrayName="companies">
+        <div *ngFor="let comp of myForm.get('companies').controls; let i=index">
+        <fieldset>
+          <legend><h4>Module {{i+1}}: </h4></legend>
+          <div [formGroupName]="i" >
+            <label>Module Name: </label>
+            <input formControlName="coursemodule" class="form-control" /><span><button class="btn btn-danger"  (click)="deleteCompany(i)">Delete Module</button></span>
+            <div formArrayName="projects">
+              <div *ngFor="let project of comp.get('projects').controls; let j=index">
+                <fieldset>
+                <legend><h4>Course Name{{j+1}}</h4></legend>
+                <div [formGroupName]="j">
+                    <div >Provide a name for your content</div>
+                    <div><input type="text" class="form-control"  formControlName="submodulename"></div><br>
+                    <div>Choose your file from here!<br>
+                      format  pdf,audio video</div><br>
+                      <select (change)="choice($event.target.value)" class="form-control">
+                          <option *ngFor="let c of Uploadfile">{{c.name}}</option>
+                        </select>
+                        {{selectedfile}}
+
+                        <div [ngSwitch]="selectedfile" >
+                            <div *ngSwitchCase="'video'">
+                                <div class="col-sm-8 text-center video">
+                                    <h5>Upload Video</h5>
+                                      <div class="btn btn-rounded aqua-gradient"  formControlName="uploadvideofile"  style="height:50px; font-size:16px;">
+                                    <input type="file" (change)="handleFileInput($event)">
+                                     </div>
+                                  </div>
+                                      </div>
+                                      <div *ngSwitchCase="'ppt'">
+
+                                          <div class="col-sm-8 text-center">
+                                            <h5>Upload PPt</h5>
+                                            <div class="btn btn-rounded aqua-gradient" formControlName="uploadpptfile" style="height:50px; font-size:16px;">
+                                          <input type="file" >
+                                          </div>
+
+                                        </div>
+                                                </div>
+                                                <div *ngSwitchCase="'pdf'">
+                                                    <div class="col-sm-8 text-center">
+                                                       <h5>Upload Pdf</h5>
+                                                       <div class="btn btn-rounded aqua-gradient" formControlName="uploadpptfile" style="height:50px; font-size:16px;">
+                                                     <input type="file" >
+
+                                         </div>
+                                                   </div>
+                                                   </div>
+                                                  </div>
+
+
+                  <button class="btn btn-danger" (click)="deleteProject(comp.controls.projects, j)">Delete submodule</button>
+                </div>
+                </fieldset>
+              </div>
+              <button class="btn btn-primary" (click)="addNewProject(comp.controls.projects)">Add new Project</button>
+            </div>
+          </div>
+        </fieldset>
+        </div>
+      </div><br>
+      <button type="submit" class="btn btn-success">save</button>
+    </div>
+  </div>
+
+    </form>
+
+
+
+        </body>
+
+
+
+
+
+
+

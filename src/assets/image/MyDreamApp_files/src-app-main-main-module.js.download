@@ -1,0 +1,894 @@
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["src-app-main-main-module"],{
+
+/***/ "./src/app/main/instructor/about.component.html":
+/*!******************************************************!*\
+  !*** ./src/app/main/instructor/about.component.html ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\r\n<body>\r\n    <div class=\"img-fluid img\" >\r\n        <mat-card class=\"about-matcard\">\r\n            <form  [formGroup]=\"profileform\" (ngSubmit)=\"add()\">\r\n<h4>Tell Us about Yourself</h4><hr>\r\n\r\n   <div class=\"about-info\"> Are you already teaching online?<br>\r\n   <select   formControlName=\"teachingonline\" required>\r\n\r\n       <option *ngFor=\"let item of teachingonline\"  [value]=\"item.teachingid\" >\r\n           {{item.teachingname}}</option>\r\n   </select>\r\n\r\n</div>\r\n<div  class=\"about-info\">Do you already have a following and/or an email list built around your topic?<br>\r\n   <select  formControlName=\"havefollowing\" ng-model=\"selected\" ng-init=\"selected = arr[1]\" required>\r\n       <option *ngFor=\"let item of havefollowing\"   [value]=\"item.followingId\">{{item.followingname}}</option>\r\n   </select></div>\r\n\r\n <div  class=\"about-info\">  How much training material have you already produced?<br>\r\n    (slide decks, training guides, books, blog posts, videos, PDF's etc)\r\n    <br><select   formControlName=\"trainningmaterial\" required>\r\n        <option *ngFor=\"let item of trainningmaterial \"  [value]=\"item.materialId\">{{item.materialname}}</option>\r\n    </select></div>\r\n\r\n  <div  class=\"about-info\"> Would you identify yourself as:<br>\r\n    <select   formControlName=\"identify\" required>\r\n        <option *ngFor=\"let item of identify\"   [value]=\"item.identifyid\">{{item.identifyname}}</option>\r\n    </select>\r\n\r\n\r\n</div>\r\n\r\n  <button class=\"submit-btn\"mat-raised-button routerLink=\"./dashboard\" type=\"submit\">Continue</button>\r\n</form>\r\n</mat-card>\r\n\r\n</div>\r\n</body>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/main/instructor/about.component.ts":
+/*!****************************************************!*\
+  !*** ./src/app/main/instructor/about.component.ts ***!
+  \****************************************************/
+/*! exports provided: AboutInstructorComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AboutInstructorComponent", function() { return AboutInstructorComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var src_app_service_user_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/service/user.service */ "./src/app/service/user.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+
+
+
+
+
+var AboutInstructorComponent = /** @class */ (function () {
+    function AboutInstructorComponent(fb, service, router) {
+        this.fb = fb;
+        this.service = service;
+        this.router = router;
+        this.teachingonline = [
+            { teachingid: 1, teachingname: "Please choose an option" },
+            { teachingid: 2, teachingname: "I have online course and m switching from another course platform" },
+            { teachingid: 3, teachingname: "I am teaching online but not yet online course" },
+            { teachingid: 4, teachingname: "I'm currently teaching but not online" },
+            { teachingid: 5, teachingname: "I have'nt started teaching yet" },
+            { teachingid: 6, teachingname: "i'm just messing around" }
+        ];
+        this.havefollowing = [
+            { followingId: 1, followingname: "Please choose an option" },
+            { followingId: 2, followingname: "yes, 10,000+people" },
+            { followingId: 3, followingname: "yes, 10,000-100,000 people" },
+            { followingId: 4, followingname: "yes, 1000-10,000 people" },
+            { followingId: 5, followingname: "yes,100-1,000 people" },
+            { followingId: 6, followingname: "yes,1-100 people" },
+            { followingId: 7, followingname: "Not,yet I m just starting yet" }
+        ];
+        this.trainningmaterial = [
+            { materialId: 1, materialname: "Please choose an option" },
+            { materialId: 2, materialname: "My trainning content already is already built" },
+            { materialId: 3, materialname: "I have a few piece but i m looking to build a lot" },
+            { materialId: 4, materialname: "I dont't have much yet" }
+        ];
+        this.identify = [
+            { identifyid: 1, identifyname: "Please choose an option" },
+            { identifyid: 2, identifyname: "Coach" },
+            { identifyid: 3, identifyname: "Social Infulencer" },
+            { identifyid: 4, identifyname: "I work as a part of a large company" },
+            { identifyid: 5, identifyname: "Author/Blogger" }
+        ];
+        this.profileform = new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormGroup"]({
+            teachingonline: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](null, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required),
+            havefollowing: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](null, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required),
+            trainningmaterial: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](null, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required),
+            identify: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](null, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required),
+        });
+    }
+    AboutInstructorComponent.prototype.add = function () {
+        this.service.adddata(this.profileform.value);
+        this.router.navigate(['./dashboard']);
+    };
+    AboutInstructorComponent.prototype.ngOnInit = function () {
+        this.isVisible = true;
+    };
+    AboutInstructorComponent.prototype.toggle = function () { this.isVisible = !this.isVisible; };
+    AboutInstructorComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: "about",
+            template: __webpack_require__(/*! ./about.component.html */ "./src/app/main/instructor/about.component.html"),
+            styles: [__webpack_require__(/*! ./instructor.component.css */ "./src/app/main/instructor/instructor.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormBuilder"], src_app_service_user_service__WEBPACK_IMPORTED_MODULE_2__["UserService"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
+    ], AboutInstructorComponent);
+    return AboutInstructorComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/main/instructor/content.component.html":
+/*!********************************************************!*\
+  !*** ./src/app/main/instructor/content.component.html ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<meta charset=\"utf-8\">\r\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\r\n<body style=\"margin-top:-20px;\">\r\n  <div class=\"jumbotron\">\r\n      <div class=\"row\">\r\n       <div class=\"col-md-4\">\r\n              <button class=\"btn btn-primary\" (click)=\"save()\">Started</button>\r\n       </div>\r\n       <div class=\"col-md-8\" style=\"color:white;text-align:center\" >\r\n         <h3 ><b>Global Imapct of DigiSaksham</b></h3>\r\n         <h4>Help people learn new skills, advance their careers,<br> and explore their hobbies by sharing your knowledge.</h4>\r\n       </div>\r\n        </div>\r\n      </div>\r\n   <div class=\"row\">\r\n     <div class=\"col-md-4\" style=\"text-align:left\">\r\n       <h2 style=\"margin-left:40px;\"><b>Get Started</b></h2>\r\n       <h5 style=\"font-size: 20px;margin-left:40px\">The more specific hotel information you provide, the easier it is for trivago to promote you to your ideal guests. Outstanding content - such as contact details, eye-catching images, amenity and service listings and engaging descriptions - makes your profile more attractive to our users.</h5>\r\n     </div>\r\n     <div class=\"col-md-8\" >\r\n     <img src=\"assets/image/content1.png\"  class=\"center\" width=\"500px\" height=\"800px\">\r\n     </div>\r\n   </div>\r\n\r\n   <div class=\"row\">\r\n      <div class=\"col-md-4\" style=\"text-align:left\">\r\n        <h2 style=\"margin-left:40px;\"><b>Get Started</b></h2>\r\n        <h5 style=\"font-size: 20px;margin-left:40px\">The more specific hotel information you provide, the easier it is for trivago to promote you to your ideal guests. Outstanding content - such as contact details, eye-catching images, amenity and service listings and engaging descriptions - makes your profile more attractive to our users.</h5>\r\n      </div>\r\n      <div class=\"col-md-8\" >\r\n      <img src=\"assets/image/content1.png\"  class=\"center\" width=\"500px\" height=\"800px\">\r\n      </div>\r\n    </div>\r\n\r\n  </body>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/main/instructor/instructor.component.css":
+/*!**********************************************************!*\
+  !*** ./src/app/main/instructor/instructor.component.css ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\r\n\r\n\r\n.image{\r\n    height:25em; background-size:cover; width:auto;\r\n    background-image:url('/assets/image/bg.jpg');\r\n    background-position:50% 50%;\r\n    position: relative;\r\n    bottom:58px;\r\n  }\r\n  .btn{\r\n    position:absolute;\r\n    left:100px;\r\n   top: 2px;\r\n   width:200px;\r\n   height:50px;\r\n   }\r\n  #potential{\r\n\r\n       font-size: 42px;\r\n       color:gray;\r\n       margin-top:20px;\r\n   }\r\n  .text-center{\r\n       margin-top:20px;\r\n\r\n}\r\n  .col-lg-4{\r\n       margin-top:40px;\r\n       text-align: center;\r\n   }\r\n  /****instructor signup and login **/\r\n  body {\r\n    font-family: Arial, Helvetica, sans-serif;\r\n  }\r\n  input,\r\n.btn2 {\r\n  width: 100%;\r\n  padding: 12px;\r\n  border: none;\r\n  border-radius: 4px;\r\n  margin: 5px 0;\r\n  opacity: 0.85;\r\n  display: inline-block;\r\n  font-size: 17px;\r\n  line-height: 20px;\r\n  text-decoration: none; /* remove underline from anchors */\r\n}\r\n  .fb {\r\n    background-color: #3B5998;\r\n    color: white;\r\n  }\r\n  .fb:hover{\r\n    background-color:#3B5998;\r\n\r\n  }\r\n  .google {\r\n    background-color:white;\r\n    color:black;\r\n\r\n\r\n  }\r\n  .google:hover{\r\n    background-color:white;\r\n\r\n  }\r\n  input[type=submit] {\r\n    background-color: #4CAF50;\r\n    color: white;\r\n    cursor: pointer;\r\n  }\r\n  input[type=submit]:hover {\r\n    background-color: #45a049;\r\n  }\r\n  @media screen and (max-width: 650px) {\r\n    .col {\r\n      width: 100%;\r\n      margin-top: 0;\r\n    }\r\n    /* hide the vertical line */\r\n    .vl {\r\n      display: none;\r\n    }\r\n    /* show the hidden text on small screens */\r\n    .hide-md-lg {\r\n      display: block;\r\n      text-align: center;\r\n    }\r\n  }\r\n  span.digi{\r\n      color:#000080;\r\n  }\r\n  span.saksham{\r\n      color:#FF4500;\r\n\r\n  }\r\n  .remember{\r\n      position: relative;\r\n      bottom:25px;\r\n      left:60px;\r\n\r\n  }\r\n  .matcardsign{\r\n  max-width:600px;\r\n  max-height:500px;\r\n}\r\n  .material-icons{\r\n    cursor:pointer;\r\n  }\r\n  .full{\r\n    font-size: 12px;\r\n  }\r\n  .singupbutton{\r\n      border:none;\r\n      color:blue;\r\n      background-color: white;\r\n  }\r\n  .about-matcard{\r\n    background-color: #F0F8FF;\r\n  max-width:600px;\r\n  height:auto;\r\n  max-width: 500px;\r\n   height:auto;\r\n  display: block;\r\n  margin-left:auto;\r\n  margin-right:auto;\r\n   align-self: center;\r\n\r\n  }\r\n  /******** select box********/\r\n  select{\r\n    width:290px;\r\n    height:40px;\r\n    border:none;\r\n    font-family:roboto;\r\n    color:black;\r\n    background: white;\r\n  }\r\n  div{\r\n    padding-top:20px;\r\n  }\r\n  .img-fluid{\r\n\r\n    background-size:cover;\r\n    background-attachment: fixed;\r\n    background-image: url(\"/assets/image/about.jpg\");\r\n    height: 1000px;\r\n    position: relative;\r\n bottom:28px;\r\n\r\n\r\n  }\r\n  .submit-btn{\r\n    background-color: white;\r\n    border:none;\r\n    position:absolute;\r\n    margin-top:20px;\r\n    height:50px;\r\n    width:200px;\r\n   left:20px;\r\n\r\n  }\r\n  #loginbody{\r\n    max-width:400px;\r\n      max-height:450px;\r\n  }\r\n  .text-danger{\r\n    font-size:10px;\r\n  }\r\n  /************content page*************/\r\n  .jumbotron{\r\n    height:200%;\r\n    background-color:#6495ed\t;\r\n\r\n  }\r\n  .center {\r\n    display: block;\r\n    margin-left: auto;\r\n    margin-right: auto;\r\n    width: 50%;\r\n  }\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbWFpbi9pbnN0cnVjdG9yL2luc3RydWN0b3IuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7QUFHQTtJQUNJLFdBQVcsRUFBRSxxQkFBcUIsRUFBRSxVQUFVO0lBQzlDLDRDQUE0QztJQUM1QywyQkFBMkI7SUFDM0Isa0JBQWtCO0lBQ2xCLFdBQVc7RUFDYjtFQUNBO0lBQ0UsaUJBQWlCO0lBQ2pCLFVBQVU7R0FDWCxRQUFRO0dBQ1IsV0FBVztHQUNYLFdBQVc7R0FDWDtFQUdBOztPQUVJLGVBQWU7T0FDZixVQUFVO09BQ1YsZUFBZTtHQUNuQjtFQUNBO09BQ0ksZUFBZTs7QUFFdEI7RUFDRztPQUNJLGVBQWU7T0FDZixrQkFBa0I7R0FDdEI7RUFHQSxtQ0FBbUM7RUFDbkM7SUFDQyx5Q0FBeUM7RUFDM0M7RUFDQTs7RUFFQSxXQUFXO0VBQ1gsYUFBYTtFQUNiLFlBQVk7RUFDWixrQkFBa0I7RUFDbEIsYUFBYTtFQUNiLGFBQWE7RUFDYixxQkFBcUI7RUFDckIsZUFBZTtFQUNmLGlCQUFpQjtFQUNqQixxQkFBcUIsRUFBRSxrQ0FBa0M7QUFDM0Q7RUFDQTtJQUNJLHlCQUF5QjtJQUN6QixZQUFZO0VBQ2Q7RUFDQTtJQUNFLHdCQUF3Qjs7RUFFMUI7RUFDQTtJQUNFLHNCQUFzQjtJQUN0QixXQUFXOzs7RUFHYjtFQUNBO0lBQ0Usc0JBQXNCOztFQUV4QjtFQUNBO0lBQ0UseUJBQXlCO0lBQ3pCLFlBQVk7SUFDWixlQUFlO0VBQ2pCO0VBQ0E7SUFDRSx5QkFBeUI7RUFDM0I7RUFDQTtJQUNFO01BQ0UsV0FBVztNQUNYLGFBQWE7SUFDZjtJQUNBLDJCQUEyQjtJQUMzQjtNQUNFLGFBQWE7SUFDZjtJQUNBLDBDQUEwQztJQUMxQztNQUNFLGNBQWM7TUFDZCxrQkFBa0I7SUFDcEI7RUFDRjtFQUNBO01BQ0ksYUFBYTtFQUNqQjtFQUNBO01BQ0ksYUFBYTs7RUFFakI7RUFLQTtNQUNJLGtCQUFrQjtNQUNsQixXQUFXO01BQ1gsU0FBUzs7RUFFYjtFQUVGO0VBQ0UsZUFBZTtFQUNmLGdCQUFnQjtBQUNsQjtFQUVFO0lBQ0UsY0FBYztFQUNoQjtFQUNBO0lBQ0UsZUFBZTtFQUNqQjtFQUNBO01BQ0ksV0FBVztNQUNYLFVBQVU7TUFDVix1QkFBdUI7RUFDM0I7RUFFQTtJQUNFLHlCQUF5QjtFQUMzQixlQUFlO0VBQ2YsV0FBVztFQUNYLGdCQUFnQjtHQUNmLFdBQVc7RUFDWixjQUFjO0VBQ2QsZ0JBQWdCO0VBQ2hCLGlCQUFpQjtHQUNoQixrQkFBa0I7O0VBRW5CO0VBSUEsNEJBQTRCO0VBQzVCO0lBQ0UsV0FBVztJQUNYLFdBQVc7SUFDWCxXQUFXO0lBQ1gsa0JBQWtCO0lBQ2xCLFdBQVc7SUFDWCxpQkFBaUI7RUFDbkI7RUFDQTtJQUNFLGdCQUFnQjtFQUNsQjtFQUVBOztJQUVFLHFCQUFxQjtJQUNyQiw0QkFBNEI7SUFDNUIsZ0RBQWdEO0lBQ2hELGNBQWM7SUFDZCxrQkFBa0I7Q0FDckIsV0FBVzs7O0VBR1Y7RUFDQTtJQUNFLHVCQUF1QjtJQUN2QixXQUFXO0lBQ1gsaUJBQWlCO0lBQ2pCLGVBQWU7SUFDZixXQUFXO0lBQ1gsV0FBVztHQUNaLFNBQVM7O0VBRVY7RUFDQTtJQUNFLGVBQWU7TUFDYixnQkFBZ0I7RUFDcEI7RUFHQTtJQUNFLGNBQWM7RUFDaEI7RUFHQSxzQ0FBc0M7RUFDdEM7SUFDRSxXQUFXO0lBQ1gseUJBQXlCOztFQUUzQjtFQUVBO0lBQ0UsY0FBYztJQUNkLGlCQUFpQjtJQUNqQixrQkFBa0I7SUFDbEIsVUFBVTtFQUNaIiwiZmlsZSI6InNyYy9hcHAvbWFpbi9pbnN0cnVjdG9yL2luc3RydWN0b3IuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIlxyXG5cclxuXHJcbi5pbWFnZXtcclxuICAgIGhlaWdodDoyNWVtOyBiYWNrZ3JvdW5kLXNpemU6Y292ZXI7IHdpZHRoOmF1dG87XHJcbiAgICBiYWNrZ3JvdW5kLWltYWdlOnVybCgnL2Fzc2V0cy9pbWFnZS9iZy5qcGcnKTtcclxuICAgIGJhY2tncm91bmQtcG9zaXRpb246NTAlIDUwJTtcclxuICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuICAgIGJvdHRvbTo1OHB4O1xyXG4gIH1cclxuICAuYnRue1xyXG4gICAgcG9zaXRpb246YWJzb2x1dGU7XHJcbiAgICBsZWZ0OjEwMHB4O1xyXG4gICB0b3A6IDJweDtcclxuICAgd2lkdGg6MjAwcHg7XHJcbiAgIGhlaWdodDo1MHB4O1xyXG4gICB9XHJcblxyXG5cclxuICAgI3BvdGVudGlhbHtcclxuXHJcbiAgICAgICBmb250LXNpemU6IDQycHg7XHJcbiAgICAgICBjb2xvcjpncmF5O1xyXG4gICAgICAgbWFyZ2luLXRvcDoyMHB4O1xyXG4gICB9XHJcbiAgIC50ZXh0LWNlbnRlcntcclxuICAgICAgIG1hcmdpbi10b3A6MjBweDtcclxuXHJcbn1cclxuICAgLmNvbC1sZy00e1xyXG4gICAgICAgbWFyZ2luLXRvcDo0MHB4O1xyXG4gICAgICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICB9XHJcblxyXG5cclxuICAgLyoqKippbnN0cnVjdG9yIHNpZ251cCBhbmQgbG9naW4gKiovXHJcbiAgIGJvZHkge1xyXG4gICAgZm9udC1mYW1pbHk6IEFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWY7XHJcbiAgfVxyXG4gIGlucHV0LFxyXG4uYnRuMiB7XHJcbiAgd2lkdGg6IDEwMCU7XHJcbiAgcGFkZGluZzogMTJweDtcclxuICBib3JkZXI6IG5vbmU7XHJcbiAgYm9yZGVyLXJhZGl1czogNHB4O1xyXG4gIG1hcmdpbjogNXB4IDA7XHJcbiAgb3BhY2l0eTogMC44NTtcclxuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XHJcbiAgZm9udC1zaXplOiAxN3B4O1xyXG4gIGxpbmUtaGVpZ2h0OiAyMHB4O1xyXG4gIHRleHQtZGVjb3JhdGlvbjogbm9uZTsgLyogcmVtb3ZlIHVuZGVybGluZSBmcm9tIGFuY2hvcnMgKi9cclxufVxyXG4uZmIge1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzNCNTk5ODtcclxuICAgIGNvbG9yOiB3aGl0ZTtcclxuICB9XHJcbiAgLmZiOmhvdmVye1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjojM0I1OTk4O1xyXG5cclxuICB9XHJcbiAgLmdvb2dsZSB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOndoaXRlO1xyXG4gICAgY29sb3I6YmxhY2s7XHJcblxyXG5cclxuICB9XHJcbiAgLmdvb2dsZTpob3ZlcntcclxuICAgIGJhY2tncm91bmQtY29sb3I6d2hpdGU7XHJcblxyXG4gIH1cclxuICBpbnB1dFt0eXBlPXN1Ym1pdF0ge1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzRDQUY1MDtcclxuICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgIGN1cnNvcjogcG9pbnRlcjtcclxuICB9XHJcbiAgaW5wdXRbdHlwZT1zdWJtaXRdOmhvdmVyIHtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICM0NWEwNDk7XHJcbiAgfVxyXG4gIEBtZWRpYSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDY1MHB4KSB7XHJcbiAgICAuY29sIHtcclxuICAgICAgd2lkdGg6IDEwMCU7XHJcbiAgICAgIG1hcmdpbi10b3A6IDA7XHJcbiAgICB9XHJcbiAgICAvKiBoaWRlIHRoZSB2ZXJ0aWNhbCBsaW5lICovXHJcbiAgICAudmwge1xyXG4gICAgICBkaXNwbGF5OiBub25lO1xyXG4gICAgfVxyXG4gICAgLyogc2hvdyB0aGUgaGlkZGVuIHRleHQgb24gc21hbGwgc2NyZWVucyAqL1xyXG4gICAgLmhpZGUtbWQtbGcge1xyXG4gICAgICBkaXNwbGF5OiBibG9jaztcclxuICAgICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICAgfVxyXG4gIH1cclxuICBzcGFuLmRpZ2l7XHJcbiAgICAgIGNvbG9yOiMwMDAwODA7XHJcbiAgfVxyXG4gIHNwYW4uc2Frc2hhbXtcclxuICAgICAgY29sb3I6I0ZGNDUwMDtcclxuXHJcbiAgfVxyXG5cclxuXHJcblxyXG5cclxuICAucmVtZW1iZXJ7XHJcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuICAgICAgYm90dG9tOjI1cHg7XHJcbiAgICAgIGxlZnQ6NjBweDtcclxuXHJcbiAgfVxyXG5cclxuLm1hdGNhcmRzaWdue1xyXG4gIG1heC13aWR0aDo2MDBweDtcclxuICBtYXgtaGVpZ2h0OjUwMHB4O1xyXG59XHJcblxyXG4gIC5tYXRlcmlhbC1pY29uc3tcclxuICAgIGN1cnNvcjpwb2ludGVyO1xyXG4gIH1cclxuICAuZnVsbHtcclxuICAgIGZvbnQtc2l6ZTogMTJweDtcclxuICB9XHJcbiAgLnNpbmd1cGJ1dHRvbntcclxuICAgICAgYm9yZGVyOm5vbmU7XHJcbiAgICAgIGNvbG9yOmJsdWU7XHJcbiAgICAgIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xyXG4gIH1cclxuXHJcbiAgLmFib3V0LW1hdGNhcmR7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjRjBGOEZGO1xyXG4gIG1heC13aWR0aDo2MDBweDtcclxuICBoZWlnaHQ6YXV0bztcclxuICBtYXgtd2lkdGg6IDUwMHB4O1xyXG4gICBoZWlnaHQ6YXV0bztcclxuICBkaXNwbGF5OiBibG9jaztcclxuICBtYXJnaW4tbGVmdDphdXRvO1xyXG4gIG1hcmdpbi1yaWdodDphdXRvO1xyXG4gICBhbGlnbi1zZWxmOiBjZW50ZXI7XHJcblxyXG4gIH1cclxuXHJcblxyXG5cclxuICAvKioqKioqKiogc2VsZWN0IGJveCoqKioqKioqL1xyXG4gIHNlbGVjdHtcclxuICAgIHdpZHRoOjI5MHB4O1xyXG4gICAgaGVpZ2h0OjQwcHg7XHJcbiAgICBib3JkZXI6bm9uZTtcclxuICAgIGZvbnQtZmFtaWx5OnJvYm90bztcclxuICAgIGNvbG9yOmJsYWNrO1xyXG4gICAgYmFja2dyb3VuZDogd2hpdGU7XHJcbiAgfVxyXG4gIGRpdntcclxuICAgIHBhZGRpbmctdG9wOjIwcHg7XHJcbiAgfVxyXG5cclxuICAuaW1nLWZsdWlke1xyXG5cclxuICAgIGJhY2tncm91bmQtc2l6ZTpjb3ZlcjtcclxuICAgIGJhY2tncm91bmQtYXR0YWNobWVudDogZml4ZWQ7XHJcbiAgICBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoXCIvYXNzZXRzL2ltYWdlL2Fib3V0LmpwZ1wiKTtcclxuICAgIGhlaWdodDogMTAwMHB4O1xyXG4gICAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gYm90dG9tOjI4cHg7XHJcblxyXG5cclxuICB9XHJcbiAgLnN1Ym1pdC1idG57XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcclxuICAgIGJvcmRlcjpub25lO1xyXG4gICAgcG9zaXRpb246YWJzb2x1dGU7XHJcbiAgICBtYXJnaW4tdG9wOjIwcHg7XHJcbiAgICBoZWlnaHQ6NTBweDtcclxuICAgIHdpZHRoOjIwMHB4O1xyXG4gICBsZWZ0OjIwcHg7XHJcblxyXG4gIH1cclxuICAjbG9naW5ib2R5e1xyXG4gICAgbWF4LXdpZHRoOjQwMHB4O1xyXG4gICAgICBtYXgtaGVpZ2h0OjQ1MHB4O1xyXG4gIH1cclxuXHJcblxyXG4gIC50ZXh0LWRhbmdlcntcclxuICAgIGZvbnQtc2l6ZToxMHB4O1xyXG4gIH1cclxuXHJcblxyXG4gIC8qKioqKioqKioqKipjb250ZW50IHBhZ2UqKioqKioqKioqKioqL1xyXG4gIC5qdW1ib3Ryb257XHJcbiAgICBoZWlnaHQ6MjAwJTtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IzY0OTVlZFx0O1xyXG5cclxuICB9XHJcblxyXG4gIC5jZW50ZXIge1xyXG4gICAgZGlzcGxheTogYmxvY2s7XHJcbiAgICBtYXJnaW4tbGVmdDogYXV0bztcclxuICAgIG1hcmdpbi1yaWdodDogYXV0bztcclxuICAgIHdpZHRoOiA1MCU7XHJcbiAgfVxyXG4iXX0= */"
+
+/***/ }),
+
+/***/ "./src/app/main/instructor/instructor.component.html":
+/*!***********************************************************!*\
+  !*** ./src/app/main/instructor/instructor.component.html ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<link rel = \"stylesheet\" href = \"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css\">\r\n\r\n<div class=\"row\">\r\n<div class=\"container-fluid\">\r\n    <div class=\"image\">\r\n        <div class=\"hero text text-white text-left\">\r\n            <h2 style=\"font-family: Arial, Helvetica, sans-serif;padding-top:100px;margin-left:100px ;\">Make a global impact</h2>\r\n            <p style=\"padding-left:100px\">Create an online video course and earn money by teaching <br>people around the world.</p>\r\n\r\n        </div>\r\n        <div class=\"row\">\r\n                <div class=\"col-md-4 col-lg-2\">\r\n                  <button class=\"btn btn-danger\" (click)=\" openLoginDialog()\">Become an instructor</button>\r\n                </div>\r\n              </div>\r\n    </div>\r\n  </div>\r\n\r\n</div>\r\n<body>\r\n    <div class=\"container\" >\r\n        <div class=\"text-center\" id=\"potential\">Discover Your potential</div>\r\n\r\n        <div class=\"row\">\r\n            <div class=\"col-lg-4\" >\r\n                    <img src=\"https://img.icons8.com/ios/50/000000/money-box.png\"  height=\"60px\" width=\"50px\">\r\n                    <div class=\"text-center\">Earn money</div>\r\n                    <div class=\"text-center\">Earn money every time a student purchases your course.Get paid monthly through PayPal or Payoneer, it’s your choice.</div>\r\n            </div>\r\n            <div class=\"col-lg-4\">\r\n                    <img src=\"https://img.icons8.com/ios/24/000000/video-playlist.png\" height=\"60px\" width=\"50px\">\r\n                    <div class=\"text-center\">Inspire students</div>\r\n                    <div class=\"text-center\">Help people learn new skills, advance their careers, and explore their hobbies by sharing your knowledge.</div>\r\n                 </div>\r\n                 <div class=\"col-lg-4\">\r\n                        <img src=\"https://img.icons8.com/ios/50/000000/facebook-like.png\" height=\"60px\" width=\"50px\">\r\n                        <div class=\"text-center\">Join our community</div>\r\n                        <div class=\"text-center\">Take advantage of our active community of instructors to help you through your course creation process.</div>\r\n                     </div>\r\n\r\n        </div>\r\n\r\n        <div class=\"text-center\" id=\"potential\">Evision your success</div>\r\n\r\n              <mat-horizontal-stepper [linear]=\"isLinear\" #stepper>\r\n                    <i class=\"fa fa-arrow-circle-left custom\" ></i>\r\n                  <mat-step>\r\n\r\n                    <ng-template matStepLabel>Plan your course</ng-template>\r\n                    <h4>Plan your course</h4>\r\n                  </mat-step>\r\n\r\n                  <mat-step >\r\n                        <ng-template matStepLabel>Record your video</ng-template>\r\n                    Content 2\r\n                  </mat-step>\r\n\r\n                  <mat-step>\r\n                        <ng-template matStepLabel>   <img src=\"https://img.icons8.com/dotty/80/000000/filled-chat.png\">Build your community\r\n                            </ng-template>\r\n                        Content 1\r\n                      </mat-step>\r\n\r\n\r\n              </mat-horizontal-stepper>\r\n\r\n    </div>\r\n</body>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/main/instructor/instructor.component.ts":
+/*!*********************************************************!*\
+  !*** ./src/app/main/instructor/instructor.component.ts ***!
+  \*********************************************************/
+/*! exports provided: InstructorComponent, InstructorLoginComponent, InstructorSignUpComponent, ContentComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InstructorComponent", function() { return InstructorComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InstructorLoginComponent", function() { return InstructorLoginComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InstructorSignUpComponent", function() { return InstructorSignUpComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ContentComponent", function() { return ContentComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _user_model__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../user.model */ "./src/app/main/user.model.ts");
+/* harmony import */ var src_app_service_user_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/service/user.service */ "./src/app/service/user.service.ts");
+
+
+
+
+
+
+
+var InstructorComponent = /** @class */ (function () {
+    function InstructorComponent(formBuilder, router, dialog, service) {
+        this.formBuilder = formBuilder;
+        this.router = router;
+        this.dialog = dialog;
+        this.service = service;
+        this.isLinear = false;
+    }
+    InstructorComponent.prototype.openLoginDialog = function () {
+        // tslint:disable-next-line: no-use-before-declare
+        var dialogRef = this.dialog.open(InstructorLoginComponent, {});
+    };
+    // tslint:disable-next-line: use-life-cycle-interface
+    InstructorComponent.prototype.ngOnInit = function () {
+        this.firstFormGroup = this.formBuilder.group({
+            firstCtrl: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]
+        });
+        this.secondFormGroup = this.formBuilder.group({
+            secondCtrl: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]
+        });
+    };
+    InstructorComponent.prototype.add = function () {
+        this.service.adddata(this.firstFormGroup.value);
+    };
+    InstructorComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            // tslint:disable-next-line: component-selector
+            selector: 'instructor',
+            template: __webpack_require__(/*! ./instructor.component.html */ "./src/app/main/instructor/instructor.component.html"),
+            styles: [__webpack_require__(/*! ./instructor.component.css */ "./src/app/main/instructor/instructor.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"], _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatDialog"], src_app_service_user_service__WEBPACK_IMPORTED_MODULE_6__["UserService"]])
+    ], InstructorComponent);
+    return InstructorComponent;
+}());
+
+var InstructorLoginComponent = /** @class */ (function () {
+    function InstructorLoginComponent(dialogRef, service, dialog) {
+        this.dialogRef = dialogRef;
+        this.service = service;
+        this.dialog = dialog;
+        this.loginform = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormGroup"]({
+            email: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required),
+            password: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required),
+        });
+    }
+    InstructorLoginComponent.prototype.onNoClick = function () {
+        this.dialogRef.close();
+    };
+    InstructorLoginComponent.prototype.openSignUpDialog = function () {
+        // tslint:disable-next-line: no-use-before-declare
+        var dialogRef = this.dialog.open(InstructorSignUpComponent, {});
+    };
+    InstructorLoginComponent.prototype.add = function () {
+        this.service.adddata(this.loginform.value);
+    };
+    InstructorLoginComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            // tslint:disable-next-line: component-selector
+            selector: 'instructor-login',
+            template: __webpack_require__(/*! ./instructorlogin.component.html */ "./src/app/main/instructor/instructorlogin.component.html"),
+            styles: [__webpack_require__(/*! ./instructor.component.css */ "./src/app/main/instructor/instructor.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_4__["MatDialogRef"], src_app_service_user_service__WEBPACK_IMPORTED_MODULE_6__["UserService"], _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatDialog"]])
+    ], InstructorLoginComponent);
+    return InstructorLoginComponent;
+}());
+
+var InstructorSignUpComponent = /** @class */ (function () {
+    function InstructorSignUpComponent(service, router, dialogRef) {
+        this.service = service;
+        this.router = router;
+        this.dialogRef = dialogRef;
+        // tslint:disable-next-line: new-parens
+        this.User = new _user_model__WEBPACK_IMPORTED_MODULE_5__["User"];
+        this.signupform = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormGroup"]({
+            fullname: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]),
+            email: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].pattern('[^ @]*@[^ @]*'), _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].email]),
+            phonno: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]),
+            password: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]),
+            passwordconfirm: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]),
+        });
+    }
+    /**** for closed dialog box*** */
+    InstructorSignUpComponent.prototype.onNoClick = function () {
+        this.dialogRef.close();
+    };
+    /***** for store in localstorage*****/
+    InstructorSignUpComponent.prototype.save = function () {
+        this.service.adddata(this.signupform.value);
+        alert('successful submission');
+    };
+    InstructorSignUpComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            // tslint:disable-next-line: component-selector
+            selector: 'instructor-signup',
+            template: __webpack_require__(/*! ./instructorsignup.component.html */ "./src/app/main/instructor/instructorsignup.component.html"),
+            styles: [__webpack_require__(/*! ./instructor.component.css */ "./src/app/main/instructor/instructor.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_service_user_service__WEBPACK_IMPORTED_MODULE_6__["UserService"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"], _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatDialogRef"]])
+    ], InstructorSignUpComponent);
+    return InstructorSignUpComponent;
+}());
+
+var ContentComponent = /** @class */ (function () {
+    function ContentComponent(router) {
+        this.router = router;
+    }
+    ContentComponent.prototype.save = function () {
+        this.router.navigate(['./aboutinstructor']);
+    };
+    ContentComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-content',
+            template: __webpack_require__(/*! ./content.component.html */ "./src/app/main/instructor/content.component.html"),
+            styles: [__webpack_require__(/*! ./instructor.component.css */ "./src/app/main/instructor/instructor.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
+    ], ContentComponent);
+    return ContentComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/main/instructor/instructorlogin.component.html":
+/*!****************************************************************!*\
+  !*** ./src/app/main/instructor/instructorlogin.component.html ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\r\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\r\n<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\">\r\n\r\n    <body id=\"loginbody\">\r\n\r\n\r\n\r\n\r\n        <form [formGroup]=\"loginform\" (ngSubmit)=\"add()\"><i class=\"material-icons\" (click)=\"onNoClick()\">\r\n                clear\r\n                </i>\r\n\r\n    <h4 class=\"text-center\">Log In to Your Account!</h4><hr>\r\n    <div class=\"cols\">\r\n            <a href=\"#\" class=\"fb btn2\">\r\n                    <i class=\"fa fa-facebook fa-fw\"></i> Continue with Facebook\r\n                   </a>\r\n                   <a href=\"#\" class=\"google btn2\" mat-raised-button ><img src=\"https://img.icons8.com/color/48/000000/google-logo.png\" height=\"20px\" width=\"20px\">\r\n                     Continue with Google\r\n                  </a>\r\n                </div>\r\n                  <div class=\"col\">\r\n                        <input type=\"text\" formControlName=\"email\" placeholder=\"Email\" required>\r\n                        <input type=\"password\" formControlName=\"password\" placeholder=\"Password\" required>\r\n                        <input type=\"submit\"  value=\"Login\">\r\n                      </div>\r\n\r\n\r\n</form>\r\n<div class=\"text-center\">or<a href=\"#\" style=\"color:blue\">Forget password?</a>\r\n                      <div class=\"text-center\" >Don't have an account?<button class=\"singupbutton\" (click)=\"openSignUpDialog()\">Sign Up</button>\r\n\r\n   </div>\r\n   </div>\r\n\r\n\r\n\r\n</body>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/main/instructor/instructorsignup.component.html":
+/*!*****************************************************************!*\
+  !*** ./src/app/main/instructor/instructorsignup.component.html ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\r\n<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\">\r\n<body class=\"matcardsign\">\r\n\r\n<div class=\"jumbotron\">\r\n\r\n    <div class=\"container\"><i class=\"material-icons\" (click)=\"onNoClick()\">\r\n        clear\r\n        </i>\r\n        <div class=\"row\">\r\n            <div class=\"col-md-8 offset-md-2\">\r\n                <h4>Create an account here...</h4>\r\n                <hr>\r\n\r\n                <form [formGroup]=\"signupform\" (ngSubmit)=\"save()\">\r\n                    <div class=\"form-group\">\r\n                        <a href=\"#\" class=\"fb btn2\">\r\n                                <i class=\"fa fa-facebook fa-fw\"></i> Continue with Facebook\r\n                               </a>\r\n                              <a href=\"#\" class=\"google btn2\"  ><img src=\"https://img.icons8.com/color/48/000000/google-logo.png\" height=\"20px\" width=\"20px\">Continue with Google\r\n                                </a>\r\n                                </div>\r\n\r\n                     <div class=\"form-group\">\r\n                        <input type=\"text\" class=\"form-control\" formControlName=\"fullname\" placeholder=\"Full Name\"   required />\r\n                      <span *ngIf=\"!signupform.get('fullname').valid&& signupform.get('fullname').touched\" class=\"help-block\">Please enter valid name\r\n\r\n                      </span>\r\n                     </div>\r\n\r\n\r\n\r\n                    <div class=\"form-group\" >\r\n\r\n                        <input type=\"text\" class=\"form-control\" formControlName=\"phonno\"  placeholder=\"Phone Number\"   required />\r\n\r\n                        <span *ngIf=\"!signupform.get('phonno').valid&& signupform.get('phonno').touched\" class=\"text-danger\">Please enter valid  phone no.\r\n\r\n                        </span>\r\n                      </div>\r\n\r\n                    <div class=\"form-group\">\r\n\r\n                        <input type=\"text\" class=\"form-control\" formControlName=\"email\"  placeholder=\"Email\"   pattern=\"[^ @]*@[^ @]*\"  required email/>\r\n                        <span *ngIf=\"!signupform.get('phonno').valid&& signupform.get('phonno').touched\" class=\"text-danger\">Please enter valid  email id.\r\n\r\n                          </span>\r\n                          <span *ngIf=\"!signupform.get('phonno').pattern&& signupform.get('phonno').errors\" class=\"text-danger\">Please  follow the pattern \"[^ @]*@[^ @]*\" .\r\n\r\n                            </span>\r\n                      </div>\r\n\r\n\r\n                      <div class=\"from-group\">\r\n\r\n                          <input type=\"password\" class=\"form-control\" name=\"password\" formControlName=\"password\" placeholder=\"Password\"  pattern=\"^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,10}$\" maxlength=\"8\" required>\r\n\r\n                          <span class=\"text-danger\"  *ngIf=\"!signupform.get('password').valid&& signupform.get('password').touched\">Password is required\r\n                          </span>\r\n                          <span *ngIf=\"!signupform.get('password').pattern&& signupform.get('password').errors&& signupform.get('password').maxlength\" class=\"text-danger\">\r\n\r\n                              maxlength should be 8 and required  alpha-numeric pattern with special symbol\r\n                             </span>\r\n\r\n                      </div>\r\n                      <div class=\"form-group\">\r\n\r\n                          <input type=\"password\" class=\"form-control\" name=\"passwordconfirm\" placeholder=\"Confirm Password\" formControlName=\"passwordconfirm\"   compare=\"password\"required>\r\n                          <div class=\"text-danger\"  *ngIf=\"!signupform.get('passwordconfirm').valid&& signupform.get('passwordconfirm').touched\"  >\r\n                                  <div class=\"signupform.get(passwordconfirm).invalid\">Password confirm is required</div>\r\n                                  <div class=\"!signupform.get(passwordconfirm).compare\">Password confirm do not match</div>\r\n                              </div>\r\n\r\n\r\n                      </div>\r\n\r\n\r\n\r\n\r\n\r\n                <input type=\"submit\"   routerLink=\"./content\"  value=\"SignUp\">\r\n                </form>\r\n            </div>\r\n        </div>\r\n</div>\r\n\r\n</div>\r\n\r\n</body>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/main/localstorage/localstorage.component.html":
+/*!***************************************************************!*\
+  !*** ./src/app/main/localstorage/localstorage.component.html ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<body>\r\n    <div id=\"myDIV\" class=\"header\">\r\n\r\n        <h2 style=\"margin:5px\">My To Do List</h2>\r\n       <form [formGroup]=\"todoForm\" (ngSubmit)=\"add()\">\r\n           <input type=\"text\" formControlName=\"title\" id=\"myInput\">\r\n           <input type=\"submit\" class=\"addBtn\" value=\"Add\" [disabled]=\"todoForm.invalid\">\r\n       </form>\r\n\r\n\r\n    </div>"
+
+/***/ }),
+
+/***/ "./src/app/main/localstorage/localstorage.component.ts":
+/*!*************************************************************!*\
+  !*** ./src/app/main/localstorage/localstorage.component.ts ***!
+  \*************************************************************/
+/*! exports provided: LocalStorageComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LocalStorageComponent", function() { return LocalStorageComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var src_app_service_user_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/service/user.service */ "./src/app/service/user.service.ts");
+
+
+
+
+
+var LocalStorageComponent = /** @class */ (function () {
+    function LocalStorageComponent(router, localStorageService, formBuilder) {
+        this.router = router;
+        this.localStorageService = localStorageService;
+        this.formBuilder = formBuilder;
+    }
+    LocalStorageComponent.prototype.click = function () {
+        this.router.navigate(["./b"]);
+    };
+    LocalStorageComponent.prototype.ngOnInit = function () {
+        this.todoForm = this.formBuilder.group({
+            title: ["", [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required]]
+        });
+    };
+    LocalStorageComponent.prototype.add = function () {
+        this.localStorageService.adddata(this.todoForm.value.title);
+    };
+    LocalStorageComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: "local",
+            template: __webpack_require__(/*! ./localstorage.component.html */ "./src/app/main/localstorage/localstorage.component.html")
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], src_app_service_user_service__WEBPACK_IMPORTED_MODULE_4__["UserService"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormBuilder"]])
+    ], LocalStorageComponent);
+    return LocalStorageComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/main/localstorage/seesion.component.ts":
+/*!********************************************************!*\
+  !*** ./src/app/main/localstorage/seesion.component.ts ***!
+  \********************************************************/
+/*! exports provided: SessionComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SessionComponent", function() { return SessionComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var SessionComponent = /** @class */ (function () {
+    function SessionComponent() {
+    }
+    SessionComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: "local",
+            template: __webpack_require__(/*! ./session.component.html */ "./src/app/main/localstorage/session.component.html")
+        })
+    ], SessionComponent);
+    return SessionComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/main/localstorage/session.component.html":
+/*!**********************************************************!*\
+  !*** ./src/app/main/localstorage/session.component.html ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<input type=\"text\">\r\n<button class=\"btn btn-success\">Submit</button>"
+
+/***/ }),
+
+/***/ "./src/app/main/main.component.css":
+/*!*****************************************!*\
+  !*** ./src/app/main/main.component.css ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\r\n\r\na{\r\n    text-decoration: none;\r\n    width:auto;\r\n}\r\nli{\r\n    padding-left: 60px;\r\n}\r\n#nav-link{\r\n    display: inline;\r\n    color:black;\r\n    font-size: 16px;\r\n    font-family:Roboto;\r\n}\r\n/**Center part**/\r\n.image{\r\n    height:40em; background-size:cover; width:auto;\r\n    background-image:url('/assets/image/bg.jpg');\r\n    background-position:100% 100%;\r\n    position: relative;\r\n    width:100%;\r\n\r\n  }\r\n.hero-text h2 {\r\n    font-size: 50px;\r\n    text-align: center;\r\n    padding-top: 180px;\r\n    font-family: Roboto;\r\n}\r\n.intro-newslatter input[type=text]\r\n {\r\n\theight: 53px;\r\n  min-width:75%;\r\n\tborder: none;\r\n    font-size: 14px;\r\n   }\r\n.intro-newslatter .site-btn {\r\n    height: 53px;\r\n    background-color: #E51B36;\r\n    color:white;\r\nborder: none;\r\nmin-width: 25%;\r\n }\r\nli{\r\n     color:black;\r\n }\r\n.hr{\r\n    color:  #E51B36;\r\n    background-color: #E51B36;\r\n    height: 4px;\r\n }\r\n/*footer section*/\r\n.footer-section {\r\n\tborder-top: 3px solid #d82a4e;\r\n}\r\n.footer-warp {\r\n\tmax-width: 1559px;\r\n\tpadding: 0 15px;\r\n\tmargin: 0 auto;\r\n}\r\n#mainbody{\r\n  margin-top:-20px;\r\n}\r\n/***above footer**/\r\nhtml, body, .container-table {\r\n    height: 100%;\r\n}\r\n.container-table {\r\n    display: table;\r\n}\r\n.vertical-center-row {\r\n    display: table-cell;\r\n    vertical-align: middle;\r\n\r\n}\r\n/**column above footer */\r\n.left-content{\r\n    border:0.5px solid black;\r\n    height:200px;\r\n    width:0px;\r\n    position: relative;\r\n    left:200px;\r\n    top:140px;\r\n}\r\n.right-content{\r\n    border:0.5px solid black;\r\n    height:200px;\r\n    width:0px;\r\n    position: relative;\r\n    right:200px;\r\n    bottom:150px;\r\n\r\n\r\n\r\n}\r\n.footerhr{\r\n      border:0.5px solid #333;\r\n      position: relative;\r\n      bottom:37px;\r\n    margin-left:40px;\r\n    margin-right:40px;\r\n  }\r\n.above footer{\r\n      height:auto;\r\n\r\n  }\r\n/* Change the background color of the dropdown button when the dropdown content is shown */\r\n#a{\r\n      min-width: 300px;;\r\n      height:auto;\r\n      margin-top:80px;\r\n  }\r\n.col-lg-1{\r\n    text-align:center;\r\n    margin-top:300px;\r\nmargin-right: 20px;\r\n\r\n\r\n  }\r\nspan {\r\n    content: \"\\201D\";\r\n    font-size:80px;\r\n    color:white;\r\n  text-align: center;\r\n  }\r\n.col-lg-2{\r\n    text-align: center;\r\n  }\r\n#aa{\r\n    float:left;\r\n  }\r\n.icon-box{\r\n   width:700px;\r\n   margin:100px auto;\r\n  position: relative;\r\n  margin-left:200px;\r\n\r\n\r\n }\r\nul{\r\n   padding:0px;\r\n\r\n }\r\n#aa{\r\n   float:left;\r\n   list-style-type:none;\r\n   text-align:center;\r\n }\r\n#aa i.fa{\r\n   width:60px;\r\n   height:60px;\r\n   padding:5px;\r\n\r\n   line-height:50px;\r\n   font-size:30px;\r\n   border-radius:50%;\r\n   border:2px solid  #E51B36;\r\n   margin-left:13px;\r\n   transition: .5s;\r\n\r\n\r\n }\r\n#aa i.fa:after{\r\n   content:attr(data-text);\r\n }\r\n#aa i.fa:hover{\r\n   background: black;\r\n   opacity:0.4;\r\n   color:red;\r\n }\r\n.col-sm-4  #aa{\r\n  padding-top:130px;\r\n}\r\n.col-sm-6  #aa{\r\n  padding-top:130px;\r\n}\r\n/****** css for hover text********/\r\n#text1{\r\n  position: relative;\r\n  bottom:150px;\r\n  text-align: center;\r\n  font-size:20px;\r\n  right:320px;\r\n\r\n\r\n}\r\n#col-li{\r\n  color:gray;\r\n  padding-top:10px;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbWFpbi9tYWluLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFFQTtJQUNJLHFCQUFxQjtJQUNyQixVQUFVO0FBQ2Q7QUFDQTtJQUNJLGtCQUFrQjtBQUN0QjtBQUNBO0lBQ0ksZUFBZTtJQUNmLFdBQVc7SUFDWCxlQUFlO0lBQ2Ysa0JBQWtCO0FBQ3RCO0FBQ0EsZ0JBQWdCO0FBQ2hCO0lBQ0ksV0FBVyxFQUFFLHFCQUFxQixFQUFFLFVBQVU7SUFDOUMsNENBQTRDO0lBQzVDLDZCQUE2QjtJQUM3QixrQkFBa0I7SUFDbEIsVUFBVTs7RUFFWjtBQUNBO0lBQ0UsZUFBZTtJQUNmLGtCQUFrQjtJQUNsQixrQkFBa0I7SUFDbEIsbUJBQW1CO0FBQ3ZCO0FBQ0E7O0NBRUMsWUFBWTtFQUNYLGFBQWE7Q0FDZCxZQUFZO0lBQ1QsZUFBZTtHQUNoQjtBQUNIO0lBQ0ksWUFBWTtJQUNaLHlCQUF5QjtJQUN6QixXQUFXO0FBQ2YsWUFBWTtBQUNaLGNBQWM7Q0FDYjtBQUVEO0tBQ0ssV0FBVztDQUNmO0FBQ0E7SUFDRyxlQUFlO0lBQ2YseUJBQXlCO0lBQ3pCLFdBQVc7Q0FDZDtBQUVELGlCQUFpQjtBQUNqQjtDQUNDLDZCQUE2QjtBQUM5QjtBQUVBO0NBQ0MsaUJBQWlCO0NBQ2pCLGVBQWU7Q0FDZixjQUFjO0FBQ2Y7QUFNQTtFQUNFLGdCQUFnQjtBQUNsQjtBQUVBLGtCQUFrQjtBQUVqQjtJQUNHLFlBQVk7QUFDaEI7QUFDQTtJQUNJLGNBQWM7QUFDbEI7QUFDQTtJQUNJLG1CQUFtQjtJQUNuQixzQkFBc0I7O0FBRTFCO0FBQ0Esd0JBQXdCO0FBQ3hCO0lBQ0ksd0JBQXdCO0lBQ3hCLFlBQVk7SUFDWixTQUFTO0lBQ1Qsa0JBQWtCO0lBQ2xCLFVBQVU7SUFDVixTQUFTO0FBQ2I7QUFDQTtJQUNJLHdCQUF3QjtJQUN4QixZQUFZO0lBQ1osU0FBUztJQUNULGtCQUFrQjtJQUNsQixXQUFXO0lBQ1gsWUFBWTs7OztBQUloQjtBQUNFO01BQ0ksdUJBQXVCO01BQ3ZCLGtCQUFrQjtNQUNsQixXQUFXO0lBQ2IsZ0JBQWdCO0lBQ2hCLGlCQUFpQjtFQUNuQjtBQUNBO01BQ0ksV0FBVzs7RUFFZjtBQUVBLDBGQUEwRjtBQUUxRjtNQUNJLGdCQUFnQjtNQUNoQixXQUFXO01BQ1gsZUFBZTtFQUNuQjtBQUNBO0lBQ0UsaUJBQWlCO0lBQ2pCLGdCQUFnQjtBQUNwQixrQkFBa0I7OztFQUdoQjtBQUNBO0lBQ0UsZ0JBQWdCO0lBQ2hCLGNBQWM7SUFDZCxXQUFXO0VBQ2Isa0JBQWtCO0VBQ2xCO0FBRUE7SUFDRSxrQkFBa0I7RUFDcEI7QUFDQTtJQUNFLFVBQVU7RUFDWjtBQUNEO0dBQ0UsV0FBVztHQUNYLGlCQUFpQjtFQUNsQixrQkFBa0I7RUFDbEIsaUJBQWlCOzs7Q0FHbEI7QUFFQTtHQUNFLFdBQVc7O0NBRWI7QUFFQTtHQUNFLFVBQVU7R0FDVixvQkFBb0I7R0FDcEIsaUJBQWlCO0NBQ25CO0FBRUE7R0FDRSxVQUFVO0dBQ1YsV0FBVztHQUNYLFdBQVc7O0dBRVgsZ0JBQWdCO0dBQ2hCLGNBQWM7R0FDZCxpQkFBaUI7R0FDakIseUJBQXlCO0dBQ3pCLGdCQUFnQjtHQUNoQixlQUFlOzs7Q0FHakI7QUFFQTtHQUNFLHVCQUF1QjtDQUN6QjtBQUVBO0dBQ0UsaUJBQWlCO0dBQ2pCLFdBQVc7R0FDWCxTQUFTO0NBQ1g7QUFDRDtFQUNFLGlCQUFpQjtBQUNuQjtBQUNBO0VBQ0UsaUJBQWlCO0FBQ25CO0FBQ0Esa0NBQWtDO0FBQ2xDO0VBQ0Usa0JBQWtCO0VBQ2xCLFlBQVk7RUFDWixrQkFBa0I7RUFDbEIsY0FBYztFQUNkLFdBQVc7OztBQUdiO0FBRUE7RUFDRSxVQUFVO0VBQ1YsZ0JBQWdCO0FBQ2xCIiwiZmlsZSI6InNyYy9hcHAvbWFpbi9tYWluLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcclxuXHJcbmF7XHJcbiAgICB0ZXh0LWRlY29yYXRpb246IG5vbmU7XHJcbiAgICB3aWR0aDphdXRvO1xyXG59XHJcbmxpe1xyXG4gICAgcGFkZGluZy1sZWZ0OiA2MHB4O1xyXG59XHJcbiNuYXYtbGlua3tcclxuICAgIGRpc3BsYXk6IGlubGluZTtcclxuICAgIGNvbG9yOmJsYWNrO1xyXG4gICAgZm9udC1zaXplOiAxNnB4O1xyXG4gICAgZm9udC1mYW1pbHk6Um9ib3RvO1xyXG59XHJcbi8qKkNlbnRlciBwYXJ0KiovXHJcbi5pbWFnZXtcclxuICAgIGhlaWdodDo0MGVtOyBiYWNrZ3JvdW5kLXNpemU6Y292ZXI7IHdpZHRoOmF1dG87XHJcbiAgICBiYWNrZ3JvdW5kLWltYWdlOnVybCgnL2Fzc2V0cy9pbWFnZS9iZy5qcGcnKTtcclxuICAgIGJhY2tncm91bmQtcG9zaXRpb246MTAwJSAxMDAlO1xyXG4gICAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gICAgd2lkdGg6MTAwJTtcclxuXHJcbiAgfVxyXG4gIC5oZXJvLXRleHQgaDIge1xyXG4gICAgZm9udC1zaXplOiA1MHB4O1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICAgcGFkZGluZy10b3A6IDE4MHB4O1xyXG4gICAgZm9udC1mYW1pbHk6IFJvYm90bztcclxufVxyXG4uaW50cm8tbmV3c2xhdHRlciBpbnB1dFt0eXBlPXRleHRdXHJcbiB7XHJcblx0aGVpZ2h0OiA1M3B4O1xyXG4gIG1pbi13aWR0aDo3NSU7XHJcblx0Ym9yZGVyOiBub25lO1xyXG4gICAgZm9udC1zaXplOiAxNHB4O1xyXG4gICB9XHJcbi5pbnRyby1uZXdzbGF0dGVyIC5zaXRlLWJ0biB7XHJcbiAgICBoZWlnaHQ6IDUzcHg7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjRTUxQjM2O1xyXG4gICAgY29sb3I6d2hpdGU7XHJcbmJvcmRlcjogbm9uZTtcclxubWluLXdpZHRoOiAyNSU7XHJcbiB9XHJcblxyXG5saXtcclxuICAgICBjb2xvcjpibGFjaztcclxuIH1cclxuIC5ocntcclxuICAgIGNvbG9yOiAgI0U1MUIzNjtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICNFNTFCMzY7XHJcbiAgICBoZWlnaHQ6IDRweDtcclxuIH1cclxuXHJcbi8qZm9vdGVyIHNlY3Rpb24qL1xyXG4uZm9vdGVyLXNlY3Rpb24ge1xyXG5cdGJvcmRlci10b3A6IDNweCBzb2xpZCAjZDgyYTRlO1xyXG59XHJcblxyXG4uZm9vdGVyLXdhcnAge1xyXG5cdG1heC13aWR0aDogMTU1OXB4O1xyXG5cdHBhZGRpbmc6IDAgMTVweDtcclxuXHRtYXJnaW46IDAgYXV0bztcclxufVxyXG5cclxuXHJcblxyXG5cclxuXHJcbiNtYWluYm9keXtcclxuICBtYXJnaW4tdG9wOi0yMHB4O1xyXG59XHJcblxyXG4vKioqYWJvdmUgZm9vdGVyKiovXHJcblxyXG4gaHRtbCwgYm9keSwgLmNvbnRhaW5lci10YWJsZSB7XHJcbiAgICBoZWlnaHQ6IDEwMCU7XHJcbn1cclxuLmNvbnRhaW5lci10YWJsZSB7XHJcbiAgICBkaXNwbGF5OiB0YWJsZTtcclxufVxyXG4udmVydGljYWwtY2VudGVyLXJvdyB7XHJcbiAgICBkaXNwbGF5OiB0YWJsZS1jZWxsO1xyXG4gICAgdmVydGljYWwtYWxpZ246IG1pZGRsZTtcclxuXHJcbn1cclxuLyoqY29sdW1uIGFib3ZlIGZvb3RlciAqL1xyXG4ubGVmdC1jb250ZW50e1xyXG4gICAgYm9yZGVyOjAuNXB4IHNvbGlkIGJsYWNrO1xyXG4gICAgaGVpZ2h0OjIwMHB4O1xyXG4gICAgd2lkdGg6MHB4O1xyXG4gICAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gICAgbGVmdDoyMDBweDtcclxuICAgIHRvcDoxNDBweDtcclxufVxyXG4ucmlnaHQtY29udGVudHtcclxuICAgIGJvcmRlcjowLjVweCBzb2xpZCBibGFjaztcclxuICAgIGhlaWdodDoyMDBweDtcclxuICAgIHdpZHRoOjBweDtcclxuICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuICAgIHJpZ2h0OjIwMHB4O1xyXG4gICAgYm90dG9tOjE1MHB4O1xyXG5cclxuXHJcblxyXG59XHJcbiAgLmZvb3Rlcmhye1xyXG4gICAgICBib3JkZXI6MC41cHggc29saWQgIzMzMztcclxuICAgICAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gICAgICBib3R0b206MzdweDtcclxuICAgIG1hcmdpbi1sZWZ0OjQwcHg7XHJcbiAgICBtYXJnaW4tcmlnaHQ6NDBweDtcclxuICB9XHJcbiAgLmFib3ZlIGZvb3RlcntcclxuICAgICAgaGVpZ2h0OmF1dG87XHJcblxyXG4gIH1cclxuXHJcbiAgLyogQ2hhbmdlIHRoZSBiYWNrZ3JvdW5kIGNvbG9yIG9mIHRoZSBkcm9wZG93biBidXR0b24gd2hlbiB0aGUgZHJvcGRvd24gY29udGVudCBpcyBzaG93biAqL1xyXG5cclxuICAjYXtcclxuICAgICAgbWluLXdpZHRoOiAzMDBweDs7XHJcbiAgICAgIGhlaWdodDphdXRvO1xyXG4gICAgICBtYXJnaW4tdG9wOjgwcHg7XHJcbiAgfVxyXG4gIC5jb2wtbGctMXtcclxuICAgIHRleHQtYWxpZ246Y2VudGVyO1xyXG4gICAgbWFyZ2luLXRvcDozMDBweDtcclxubWFyZ2luLXJpZ2h0OiAyMHB4O1xyXG5cclxuXHJcbiAgfVxyXG4gIHNwYW4ge1xyXG4gICAgY29udGVudDogXCJcXDIwMURcIjtcclxuICAgIGZvbnQtc2l6ZTo4MHB4O1xyXG4gICAgY29sb3I6d2hpdGU7XHJcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gIH1cclxuXHJcbiAgLmNvbC1sZy0ye1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gIH1cclxuICAjYWF7XHJcbiAgICBmbG9hdDpsZWZ0O1xyXG4gIH1cclxuIC5pY29uLWJveHtcclxuICAgd2lkdGg6NzAwcHg7XHJcbiAgIG1hcmdpbjoxMDBweCBhdXRvO1xyXG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuICBtYXJnaW4tbGVmdDoyMDBweDtcclxuXHJcblxyXG4gfVxyXG5cclxuIHVse1xyXG4gICBwYWRkaW5nOjBweDtcclxuXHJcbiB9XHJcblxyXG4gI2Fhe1xyXG4gICBmbG9hdDpsZWZ0O1xyXG4gICBsaXN0LXN0eWxlLXR5cGU6bm9uZTtcclxuICAgdGV4dC1hbGlnbjpjZW50ZXI7XHJcbiB9XHJcblxyXG4gI2FhIGkuZmF7XHJcbiAgIHdpZHRoOjYwcHg7XHJcbiAgIGhlaWdodDo2MHB4O1xyXG4gICBwYWRkaW5nOjVweDtcclxuXHJcbiAgIGxpbmUtaGVpZ2h0OjUwcHg7XHJcbiAgIGZvbnQtc2l6ZTozMHB4O1xyXG4gICBib3JkZXItcmFkaXVzOjUwJTtcclxuICAgYm9yZGVyOjJweCBzb2xpZCAgI0U1MUIzNjtcclxuICAgbWFyZ2luLWxlZnQ6MTNweDtcclxuICAgdHJhbnNpdGlvbjogLjVzO1xyXG5cclxuXHJcbiB9XHJcblxyXG4gI2FhIGkuZmE6YWZ0ZXJ7XHJcbiAgIGNvbnRlbnQ6YXR0cihkYXRhLXRleHQpO1xyXG4gfVxyXG5cclxuICNhYSBpLmZhOmhvdmVye1xyXG4gICBiYWNrZ3JvdW5kOiBibGFjaztcclxuICAgb3BhY2l0eTowLjQ7XHJcbiAgIGNvbG9yOnJlZDtcclxuIH1cclxuLmNvbC1zbS00ICAjYWF7XHJcbiAgcGFkZGluZy10b3A6MTMwcHg7XHJcbn1cclxuLmNvbC1zbS02ICAjYWF7XHJcbiAgcGFkZGluZy10b3A6MTMwcHg7XHJcbn1cclxuLyoqKioqKiBjc3MgZm9yIGhvdmVyIHRleHQqKioqKioqKi9cclxuI3RleHQxe1xyXG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuICBib3R0b206MTUwcHg7XHJcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gIGZvbnQtc2l6ZToyMHB4O1xyXG4gIHJpZ2h0OjMyMHB4O1xyXG5cclxuXHJcbn1cclxuXHJcbiNjb2wtbGl7XHJcbiAgY29sb3I6Z3JheTtcclxuICBwYWRkaW5nLXRvcDoxMHB4O1xyXG59XHJcbiJdfQ== */"
+
+/***/ }),
+
+/***/ "./src/app/main/main.component.html":
+/*!******************************************!*\
+  !*** ./src/app/main/main.component.html ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\r\n<!--Header Navigation-->\r\n\r\n<!--Below Heaader navigation-->\r\n<meta name='viewport' content='width=device-width, initial-scale=1'>\r\n<link href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css\" rel=\"stylesheet\"/>\r\n<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>\r\n\r\n\r\n<body id=\"mainbody\">\r\n <div class=\"container-fluid\">\r\n     <div class=\"row\">\r\n    <div class=\"image\">\r\n        <div class=\"hero-text text-white\">\r\n            <h2>Get The Best Free Online Courses</h2>\r\n            <p class=\"text-center\">\tLorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris scelerisque, at rutrum nulla <br> dictum. Ut ac ligula sapien. Suspendisse cursus faucibus finibus.</p>\r\n           </div>\r\n           <div class=\"row\">\r\n            <div class=\"col-lg-6 offset-lg-3\">\r\n              <form class=\"intro-newslatter\">\r\n\r\n                <input type=\"text\" class=\"last-s\" placeholder=\"Search Your Course Here!\">\r\n                <button class=\"site-btn\"><b>Search</b></button>\r\n              </form>\r\n            </div>\r\n          </div>\r\n        </div>\r\n\r\n\r\n\r\n\r\n\r\n\r\n<!--above footer-->\r\n\r\n<div class=\"col-sm-12\" style=\"background-color: black; opacity:0.8; height:600px\">\r\n\r\n    <i style=\"font-size:40px ;color:#E51B36;text-align:center;padding-left:510px;margin-top:80px\" class=\"fa\" >&#xf10d;</i>\r\n\r\n\r\n <div class=\"col-sm-6 offset-sm-2\">\r\n      <div class=\"col-sm-7 five-three\" style=\" padding-right:40px;\">\r\n\r\n        <div class=\"row\">\r\n\r\n    <div class=\"col-sm-4\">\r\n\r\n            <li id=\"aa\"> <i class='fa fa-briefcase' style=\"color: #E51B36\" (mouseover)=\"jobtext=false\" (mouseout)=\"jobtext=true\" ></i></li>\r\n\r\n\r\n\r\n\r\n            <span [hidden]=\"!jobtext\"></span>\r\n\r\n            <span [hidden]=\"jobtext\" >\r\n               <div id=\"text1\" style=\"position: relative;bottom:150px;font-size: 20px;left:290px\" >xAnveshika</div>\r\n             <div id=\"text2\" style=\"position: relative;left:160px\">dgsshgd</div>\r\n            </span>\r\n          </div>\r\n          <div class=\"col-sm-4 \">\r\n             <li id=\"aa\"><i class=\"fa fa-user \" style=\"color: #E51B36\"  (mouseover)=\"condidatetext=true\" (mouseout)=\"condidatetext=false\" ></i></li>\r\n             <span [hidden]=\"condidatetext\"></span>\r\n             <span [hidden]=\"!condidatetext\" >\r\n                <div id=\"text1\" style=\"position: relative;bottom:150px;font-size: 20px;left:200px\" >xAnveshika</div>\r\n              <div id=\"text2\" style=\"position: relative;left:130px\">dgsshgd</div>\r\n             </span>\r\n            </div>\r\n          <div class=\"col-sm-4\">\r\n              <li id=\"aa\"><i class=\"fa fa-university\" style=\"color: #E51B36\"   (mouseover)=\"collegetext=true\" (mouseout)=\"collegetext=false\"  ></i></li>\r\n              <span [hidden]=\"collegetext\"></span>\r\n             <span [hidden]=\"!collegetext\" >\r\n                <div id=\"text1\" style=\"position: relative;bottom:150px;font-size: 20px;left:90px\" >xAnveshika</div>\r\n              <div id=\"text2\">dgsshgd</div>\r\n             </span>\r\n          </div><!-- end inner row -->\r\n        </div>\r\n      </div>\r\n      <div class=\"col-sm-5 five-two\">\r\n        <div class=\"row\">\r\n          <div class=\"col-sm-6 \">\r\n            <li id=\"aa\">  <i class=\"fa fa-laptop\" style=\"color: #E51B36\" (mouseover)=\"onlinetext=true\" (mouseout)=\"onlinetext=false\" ></i></li>\r\n            <span [hidden]=\"onlinetext\"></span>\r\n            <span [hidden]=\"!onlinetext\"> <div id=\"text1\" >xAnveshikadsnfgjdsgfjkasdhfkjhsdjfhasjdfhjsadfkjsadhfjsbadfhjsdbfjsdahfkjsdhj</div>\r\n              <div id=\"text2\" style=\"position: relative;right:120px\">dgsshgd</div>\r\n            </span>\r\n          </div>\r\n          <div class=\"col-sm-6\">\r\n          <li id=\"aa\"> <i style=\"font-size:24px\"  class=\"fa\" style=\"color: #E51B36\" (mouseover)=\"peopletext=true\" (mouseout)=\"peopletext=false\"  >&#xf0c0;</i></li>\r\n          <span [hidden]=\"peopletext\"></span>\r\n             <span [hidden]=\"!peopletext\"> <div id=\"text1\" style=\"position: relative;bottom:150px;font-size: 20px;right:160px\">xAnveshika</div>\r\n              <div id=\"text2\" style=\"position: relative;right:250px\">dgsshgd</div>\r\n             </span>\r\n        </div>\r\n        </div><!-- end inner row -->\r\n      </div>\r\n\r\n    </div>​<!-- end outer row -->\r\n </div>\r\n</div>\r\n\r\n</div>\r\n\r\n<!--Footer Section-->\r\n\r\n<div class=\"col-sm-12\">\r\n\r\n    <footer class=\"footer-section spad pb-0\">\r\n\r\n        <div class=\"footer-top\">\r\n          <div class=\"footer-warp\">\r\n\r\n            <div class=\"row\">\r\n              <div class=\"col-sm-4\">\r\n                <h4>Contact Info</h4>\r\n                <ul id=\"col-ul\">\r\n                    <li id=\"col-li\">1481 Creekside Lane <br>Avila Beach, CA 931</li><br>\r\n                    <li id=\"col-li\" >+53 345 7953 32453</li>\r\n                    <li id=\"col-li\">yourmail@gmail.com</li>\r\n                </ul>\r\n              </div>\r\n              <div class=\"col-sm-4\">\r\n                <h4>Location</h4>\r\n               <div>\r\n                  <iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.664822098233!2d77.31747541461161!3d28.57982599321624!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce5166592fb65%3A0x3a2c721a2b658163!2sSEMS+Webz+Solutions!5e0!3m2!1sen!2sin!4v1558427859080!5m2!1sen!2sin\" width=\"300\" height=\"10%\" frameborder=\"0\" style=\"border:0\" allowfullscreen></iframe>\r\n               </div>\r\n              </div>\r\n              <div class=\"col-sm-4\">\r\n\r\n                <ul>\r\n                  <li  style=\"padding-top:10px\"*ngFor=\"let item of footerlist\"><a href=\"\">{{item}}</a></li>\r\n                  </ul>\r\n              </div>\r\n\r\n              </div>\r\n            </div>\r\n          </div>\r\n\r\n\r\n\r\n\r\n\r\n        </footer>\r\n      </div>\r\n\r\n\r\n\r\n</body>\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n"
+
+/***/ }),
+
+/***/ "./src/app/main/main.component.ts":
+/*!****************************************!*\
+  !*** ./src/app/main/main.component.ts ***!
+  \****************************************/
+/*! exports provided: MainComponent, LoginComponent, SignupComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MainComponent", function() { return MainComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginComponent", function() { return LoginComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SignupComponent", function() { return SignupComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_material_dialog__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material/dialog */ "./node_modules/@angular/material/esm5/dialog.es5.js");
+/* harmony import */ var _user_model__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./user.model */ "./src/app/main/user.model.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _service_user_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../service/user.service */ "./src/app/service/user.service.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+
+
+
+
+
+
+
+var MainComponent = /** @class */ (function () {
+    function MainComponent() {
+        this.jobtext = false;
+        this.condidatetext = false;
+        this.collegetext = false;
+        this.onlinetext = false;
+        this.peopletext = false;
+        this.title = 'my-dream-app';
+        this.footerlist = [
+            'About Us', 'Blog', 'Support', 'Affilate'
+        ];
+    }
+    MainComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            // tslint:disable-next-line: component-selector
+            selector: 'main',
+            template: __webpack_require__(/*! ./main.component.html */ "./src/app/main/main.component.html"),
+            styles: [__webpack_require__(/*! ./main.component.css */ "./src/app/main/main.component.css")]
+        })
+    ], MainComponent);
+    return MainComponent;
+}());
+
+var LoginComponent = /** @class */ (function () {
+    function LoginComponent(dialogRef, service) {
+        this.dialogRef = dialogRef;
+        this.service = service;
+        // tslint:disable-next-line: new-parens
+        this.User = new _user_model__WEBPACK_IMPORTED_MODULE_3__["User"];
+    }
+    LoginComponent.prototype.onNoClick = function () {
+        this.dialogRef.close();
+    };
+    LoginComponent.prototype.logindata = function () {
+        this.service.login(this.User).subscribe(function (x) {
+            // tslint:disable-next-line: triple-equals
+            if (x.userResponse.message != 'warning') {
+                alert('Successful Login');
+            }
+            else {
+                alert('User is not Valid!!');
+            }
+        });
+    };
+    LoginComponent.prototype.add = function () {
+        this.service.adddata(this.User);
+    };
+    LoginComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            // tslint:disable-next-line: component-selector
+            selector: 'login',
+            template: __webpack_require__(/*! ./register/login.component.html */ "./src/app/main/register/login.component.html"),
+            providers: [_service_user_service__WEBPACK_IMPORTED_MODULE_5__["UserService"]],
+            styles: [__webpack_require__(/*! ./register/register.component.css */ "./src/app/main/register/register.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_material_dialog__WEBPACK_IMPORTED_MODULE_2__["MatDialogRef"], _service_user_service__WEBPACK_IMPORTED_MODULE_5__["UserService"]])
+    ], LoginComponent);
+    return LoginComponent;
+}());
+
+var SignupComponent = /** @class */ (function () {
+    function SignupComponent(service, dialogRef, router) {
+        this.service = service;
+        this.dialogRef = dialogRef;
+        this.router = router;
+        this.User = new _user_model__WEBPACK_IMPORTED_MODULE_3__["User"];
+        this.studentsignupform = new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormGroup"]({
+            fullname: new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required]),
+            email: new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].pattern('[^ @]*@[^ @]*'), _angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].email]),
+            phoneno: new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required]),
+            password: new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required]),
+            passwordconfirm: new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required]),
+        });
+    }
+    SignupComponent.prototype.onNoClick = function () {
+        this.dialogRef.close();
+    };
+    SignupComponent.prototype.add = function () {
+        this.service.adddata(this.studentsignupform.value);
+    };
+    SignupComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            // tslint:disable-next-line: component-selector
+            selector: 'signup',
+            template: __webpack_require__(/*! ./register/signup.component.html */ "./src/app/main/register/signup.component.html"),
+            providers: [_service_user_service__WEBPACK_IMPORTED_MODULE_5__["UserService"]],
+            styles: [__webpack_require__(/*! ./register/register.component.css */ "./src/app/main/register/register.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_service_user_service__WEBPACK_IMPORTED_MODULE_5__["UserService"], _angular_material_dialog__WEBPACK_IMPORTED_MODULE_2__["MatDialogRef"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]])
+    ], SignupComponent);
+    return SignupComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/main/main.module.ts":
+/*!*************************************!*\
+  !*** ./src/app/main/main.module.ts ***!
+  \*************************************/
+/*! exports provided: routes, MainModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "routes", function() { return routes; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MainModule", function() { return MainModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material/button */ "./node_modules/@angular/material/esm5/button.es5.js");
+/* harmony import */ var angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! angular-bootstrap-md */ "./node_modules/angular-bootstrap-md/fesm5/angular-bootstrap-md.js");
+/* harmony import */ var ngx_bootstrap_dropdown__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-bootstrap/dropdown */ "./node_modules/ngx-bootstrap/dropdown/fesm5/ngx-bootstrap-dropdown.js");
+/* harmony import */ var _angular_material_card__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/material/card */ "./node_modules/@angular/material/esm5/card.es5.js");
+/* harmony import */ var _angular_material_dialog__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/material/dialog */ "./node_modules/@angular/material/esm5/dialog.es5.js");
+/* harmony import */ var _angular_material_icon__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/material/icon */ "./node_modules/@angular/material/esm5/icon.es5.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var _instructor_instructor_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./instructor/instructor.component */ "./src/app/main/instructor/instructor.component.ts");
+/* harmony import */ var _start_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./start.component */ "./src/app/main/start.component.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_material_stepper__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/material/stepper */ "./node_modules/@angular/material/esm5/stepper.es5.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @angular/cdk/scrolling */ "./node_modules/@angular/cdk/esm5/scrolling.es5.js");
+/* harmony import */ var _password_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./password.component */ "./src/app/main/password.component.ts");
+/* harmony import */ var _shared_compare_validator_directive__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./shared/compare-validator.directive */ "./src/app/main/shared/compare-validator.directive.ts");
+/* harmony import */ var _localstorage_seesion_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./localstorage/seesion.component */ "./src/app/main/localstorage/seesion.component.ts");
+/* harmony import */ var _localstorage_localstorage_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./localstorage/localstorage.component */ "./src/app/main/localstorage/localstorage.component.ts");
+/* harmony import */ var angular_webstorage_service__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! angular-webstorage-service */ "./node_modules/angular-webstorage-service/bundles/angular-webstorage-service.es5.js");
+/* harmony import */ var _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @angular/material/tooltip */ "./node_modules/@angular/material/esm5/tooltip.es5.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
+/* harmony import */ var _instructor_about_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./instructor/about.component */ "./src/app/main/instructor/about.component.ts");
+/* harmony import */ var _angular_cdk_layout__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! @angular/cdk/layout */ "./node_modules/@angular/cdk/esm5/layout.es5.js");
+/* harmony import */ var _main_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./main.component */ "./src/app/main/main.component.ts");
+/* harmony import */ var _service_user_service__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ../service/user.service */ "./src/app/service/user.service.ts");
+
+
+
+
+
+
+
+
+
+
+
+// tslint:disable-next-line: max-line-length
+
+
+
+
+// tslint:disable-next-line: max-line-length
+
+
+
+
+
+
+
+
+
+
+
+
+
+var routes = [
+    { path: '', component: _start_component__WEBPACK_IMPORTED_MODULE_12__["StartComponent"], children: [
+            { path: 'main', component: _main_component__WEBPACK_IMPORTED_MODULE_26__["MainComponent"] },
+            { path: 'instructor', component: _instructor_instructor_component__WEBPACK_IMPORTED_MODULE_11__["InstructorComponent"] },
+            { path: 'instructorlogin', component: _instructor_instructor_component__WEBPACK_IMPORTED_MODULE_11__["InstructorLoginComponent"] },
+            { path: 'instructorsignup', component: _instructor_instructor_component__WEBPACK_IMPORTED_MODULE_11__["InstructorSignUpComponent"] },
+            { path: 'a', component: _localstorage_localstorage_component__WEBPACK_IMPORTED_MODULE_20__["LocalStorageComponent"] },
+            { path: 'b', component: _localstorage_seesion_component__WEBPACK_IMPORTED_MODULE_19__["SessionComponent"] },
+            { path: 'aboutinstructor', component: _instructor_about_component__WEBPACK_IMPORTED_MODULE_24__["AboutInstructorComponent"] },
+            { path: 'content', component: _instructor_instructor_component__WEBPACK_IMPORTED_MODULE_11__["ContentComponent"] },
+            { path: '', component: _main_component__WEBPACK_IMPORTED_MODULE_26__["MainComponent"] },
+        ] },
+];
+var MainModule = /** @class */ (function () {
+    function MainModule() {
+    }
+    MainModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+            declarations: [_main_component__WEBPACK_IMPORTED_MODULE_26__["MainComponent"], _instructor_instructor_component__WEBPACK_IMPORTED_MODULE_11__["ContentComponent"],
+                _main_component__WEBPACK_IMPORTED_MODULE_26__["LoginComponent"], _main_component__WEBPACK_IMPORTED_MODULE_26__["SignupComponent"],
+                _instructor_instructor_component__WEBPACK_IMPORTED_MODULE_11__["InstructorComponent"], _start_component__WEBPACK_IMPORTED_MODULE_12__["StartComponent"], _password_component__WEBPACK_IMPORTED_MODULE_17__["PasswordComponent"],
+                _shared_compare_validator_directive__WEBPACK_IMPORTED_MODULE_18__["CompareValidatorDirective"],
+                _instructor_instructor_component__WEBPACK_IMPORTED_MODULE_11__["InstructorLoginComponent"], _instructor_instructor_component__WEBPACK_IMPORTED_MODULE_11__["InstructorSignUpComponent"], _localstorage_seesion_component__WEBPACK_IMPORTED_MODULE_19__["SessionComponent"], _localstorage_localstorage_component__WEBPACK_IMPORTED_MODULE_20__["LocalStorageComponent"],
+                _instructor_about_component__WEBPACK_IMPORTED_MODULE_24__["AboutInstructorComponent"],
+            ],
+            imports: [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_23__["NgbModule"],
+                angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_3__["MDBBootstrapModule"], _angular_material_dialog__WEBPACK_IMPORTED_MODULE_6__["MatDialogModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_9__["FormsModule"], _angular_common__WEBPACK_IMPORTED_MODULE_10__["CommonModule"], _angular_router__WEBPACK_IMPORTED_MODULE_13__["RouterModule"].forChild(routes),
+                _angular_material_button__WEBPACK_IMPORTED_MODULE_2__["MatButtonModule"],
+                ngx_bootstrap_dropdown__WEBPACK_IMPORTED_MODULE_4__["BsDropdownModule"], _angular_material_card__WEBPACK_IMPORTED_MODULE_5__["MatCardModule"], _angular_material_icon__WEBPACK_IMPORTED_MODULE_7__["MatIconModule"],
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_8__["HttpClientModule"], _angular_material_stepper__WEBPACK_IMPORTED_MODULE_14__["MatStepperModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_9__["ReactiveFormsModule"], _angular_material__WEBPACK_IMPORTED_MODULE_15__["MatFormFieldModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_15__["MatInputModule"], _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_16__["ScrollDispatchModule"], angular_webstorage_service__WEBPACK_IMPORTED_MODULE_21__["StorageServiceModule"], _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_22__["MatTooltipModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_15__["MatGridListModule"], _angular_material__WEBPACK_IMPORTED_MODULE_15__["MatMenuModule"], _angular_cdk_layout__WEBPACK_IMPORTED_MODULE_25__["LayoutModule"], _angular_material__WEBPACK_IMPORTED_MODULE_15__["MatToolbarModule"], _angular_material__WEBPACK_IMPORTED_MODULE_15__["MatSidenavModule"], _angular_material__WEBPACK_IMPORTED_MODULE_15__["MatListModule"]
+            ],
+            entryComponents: [_main_component__WEBPACK_IMPORTED_MODULE_26__["LoginComponent"], _main_component__WEBPACK_IMPORTED_MODULE_26__["SignupComponent"]],
+            exports: [_angular_router__WEBPACK_IMPORTED_MODULE_13__["RouterModule"]],
+            providers: [_service_user_service__WEBPACK_IMPORTED_MODULE_27__["UserService"]],
+            bootstrap: [_start_component__WEBPACK_IMPORTED_MODULE_12__["StartComponent"]]
+        })
+    ], MainModule);
+    return MainModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/main/password.component.html":
+/*!**********************************************!*\
+  !*** ./src/app/main/password.component.html ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<form #f=\"ngForm\">\r\n    <label>Password</label>\r\n   <input type=\"password\" class=\"form-control\" name=\"password\" ngModel #password=\"ngModel\" required>\r\n   <div class='text-danger' *ngIf='password.invalid && (password.dirty || password.touched)'>\r\n       password is required\r\n   </div>\r\n   <label>Confirm Pasword</label>\r\n   <input type=\"password\" class=\"form-control\" name=\"passwordconfirm\" ngModel #passwordconfirm=\"ngModel\" compare=\"password\" required>\r\n   <div class=\"text-danger\"  *ngIf=\"passwordconfirm.invalid && (passwordconfirm.dirty || passwordconfirm.touched)\" >\r\n       <div class=\"passwordconfirm.errors['required']\">Password confirm is required</div>\r\n       <div class=\"passwordconfirm.errors['compare']\">Password confirm do not match</div>\r\n   </div>\r\n\r\n   <button type=\"button\" class=\"btn btn-primary\" >submit</button>\r\n   </form>\r\n\r\n   <br>\r\n   <div class=\"card\">\r\n       <div class=\"card-body\">\r\n           <h5>Form Status:{{f.status}}</h5>\r\n           <h6>From Value</h6>\r\n           <pre>{{f.value | json}}</pre>\r\n       </div>\r\n   </div>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/main/password.component.ts":
+/*!********************************************!*\
+  !*** ./src/app/main/password.component.ts ***!
+  \********************************************/
+/*! exports provided: PasswordComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PasswordComponent", function() { return PasswordComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var PasswordComponent = /** @class */ (function () {
+    function PasswordComponent() {
+    }
+    PasswordComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: "password",
+            template: __webpack_require__(/*! ./password.component.html */ "./src/app/main/password.component.html")
+        })
+    ], PasswordComponent);
+    return PasswordComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/main/register/login.component.html":
+/*!****************************************************!*\
+  !*** ./src/app/main/register/login.component.html ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\r\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\r\n<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\">\r\n\r\n\r\n    <body>\r\n        <mat-card class=\"matcard\">\r\n\r\n        <form #f=\"ngForm\" (ngSubmit)=\"logindata()\"><i class=\"material-icons\" (click)=\"onNoClick()\">\r\n                clear\r\n                </i>\r\n    <h4 class=\"text-center\">Log In to Your Account!</h4><hr>\r\n    <div class=\"col\">\r\n            <a href=\"#\" class=\"fb btn\">\r\n                    <i class=\"fa fa-facebook fa-fw\"></i> Continue with Facebook\r\n                   </a>\r\n                   <a href=\"#\" class=\"google btn\" mat-raised-button ><img src=\"https://img.icons8.com/color/48/000000/google-logo.png\" height=\"20px\" width=\"20px\">\r\n                     Continue with Google\r\n                  </a>\r\n                </div>\r\n                  <div class=\"col\">\r\n                        <input type=\"text\" name=\"email\" placeholder=\"Email\" #email=\"ngModel\" [(ngModel)]=\"User.email\"required>\r\n                        <input type=\"password\" name=\"password\" placeholder=\"Password\" #password=\"ngModel\" [(ngModel)]=\"User.password\"required>\r\n                        <input type=\"submit\" value=\"Login\">\r\n                      </div>\r\n\r\n\r\n\r\n</form>\r\n<div class=\"text-center\">or<a href=\"#\">Forget password?</a></div>\r\n<div class=\"text-center\">Don't have an account?<a href=\"#\">Sign Up</a></div>\r\n\r\n\r\n</mat-card>\r\n</body>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/main/register/register.component.css":
+/*!******************************************************!*\
+  !*** ./src/app/main/register/register.component.css ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "body {\r\n    font-family: Arial, Helvetica, sans-serif;\r\n  }\r\n\r\n \r\n  input,\r\n.btn {\r\n  width: 100%;\r\n  padding: 12px;\r\n  border: none;\r\n  border-radius: 4px;\r\n  margin: 5px 0;\r\n  opacity: 0.85;\r\n  display: inline-block;\r\n  font-size: 17px;\r\n  line-height: 20px;\r\n  text-decoration: none; /* remove underline from anchors */\r\n}\r\n\r\n \r\n  .fb {\r\n    background-color: #3B5998;\r\n    color: white;\r\n  }\r\n\r\n \r\n  .fb:hover{\r\n    background-color:#3B5998;\r\n\r\n  }\r\n\r\n \r\n  .google {\r\n    background-color:white;\r\n    color:black;\r\n   \r\n\r\n  }\r\n\r\n \r\n  .google:hover{\r\n    background-color:white;\r\n\r\n  }\r\n\r\n \r\n  input[type=submit] {\r\n    background-color: #4CAF50;\r\n    color: white;\r\n    cursor: pointer;\r\n  }\r\n\r\n \r\n  input[type=submit]:hover {\r\n    background-color: #45a049;\r\n  }\r\n\r\n \r\n  @media screen and (max-width: 650px) {\r\n    .col {\r\n      width: 100%;\r\n      margin-top: 0;\r\n    }\r\n    /* hide the vertical line */\r\n    .vl {\r\n      display: none;\r\n    }\r\n    /* show the hidden text on small screens */\r\n    .hide-md-lg {\r\n      display: block;\r\n      text-align: center;\r\n    }\r\n  }\r\n\r\n \r\n  span.digi{\r\n      color:#000080;\r\n  }\r\n\r\n \r\n  span.saksham{\r\n      color:#FF4500;\r\n\r\n  }\r\n\r\n \r\n  button {\r\n    background-color: #4CAF50;\r\n    color: white;\r\n    padding: 14px 20px;\r\n    margin: 8px 0;\r\n    border: none;\r\n    cursor: pointer;\r\n    width: 100%;\r\n    opacity: 0.9;\r\n  }\r\n\r\n \r\n  button:hover {\r\n    opacity:1;\r\n  }\r\n\r\n \r\n  .remember{\r\n      position: relative;\r\n      bottom:25px;\r\n      left:60px;\r\n\r\n  }\r\n\r\n \r\n  .matcard{\r\n    max-width:400px;\r\n    max-height:600px;\r\n  }\r\n\r\n \r\n  .matcardsign{\r\n    max-width:600px;\r\n    max-height:600px;\r\n\r\n  }\r\n\r\n \r\n  .material-icons{\r\n    cursor:pointer;\r\n  }\r\n\r\n \r\n  .full{\r\n    font-size: 12px;\r\n  }\r\n  \r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbWFpbi9yZWdpc3Rlci9yZWdpc3Rlci5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0kseUNBQXlDO0VBQzNDOzs7RUFHQTs7RUFFQSxXQUFXO0VBQ1gsYUFBYTtFQUNiLFlBQVk7RUFDWixrQkFBa0I7RUFDbEIsYUFBYTtFQUNiLGFBQWE7RUFDYixxQkFBcUI7RUFDckIsZUFBZTtFQUNmLGlCQUFpQjtFQUNqQixxQkFBcUIsRUFBRSxrQ0FBa0M7QUFDM0Q7OztFQUNBO0lBQ0kseUJBQXlCO0lBQ3pCLFlBQVk7RUFDZDs7O0VBQ0E7SUFDRSx3QkFBd0I7O0VBRTFCOzs7RUFDQTtJQUNFLHNCQUFzQjtJQUN0QixXQUFXOzs7RUFHYjs7O0VBQ0E7SUFDRSxzQkFBc0I7O0VBRXhCOzs7RUFDQTtJQUNFLHlCQUF5QjtJQUN6QixZQUFZO0lBQ1osZUFBZTtFQUNqQjs7O0VBQ0E7SUFDRSx5QkFBeUI7RUFDM0I7OztFQUNBO0lBQ0U7TUFDRSxXQUFXO01BQ1gsYUFBYTtJQUNmO0lBQ0EsMkJBQTJCO0lBQzNCO01BQ0UsYUFBYTtJQUNmO0lBQ0EsMENBQTBDO0lBQzFDO01BQ0UsY0FBYztNQUNkLGtCQUFrQjtJQUNwQjtFQUNGOzs7RUFDQTtNQUNJLGFBQWE7RUFDakI7OztFQUNBO01BQ0ksYUFBYTs7RUFFakI7OztFQUdBO0lBQ0UseUJBQXlCO0lBQ3pCLFlBQVk7SUFDWixrQkFBa0I7SUFDbEIsYUFBYTtJQUNiLFlBQVk7SUFDWixlQUFlO0lBQ2YsV0FBVztJQUNYLFlBQVk7RUFDZDs7O0VBRUE7SUFDRSxTQUFTO0VBQ1g7OztFQUVBO01BQ0ksa0JBQWtCO01BQ2xCLFdBQVc7TUFDWCxTQUFTOztFQUViOzs7RUFDQTtJQUNFLGVBQWU7SUFDZixnQkFBZ0I7RUFDbEI7OztFQUVBO0lBQ0UsZUFBZTtJQUNmLGdCQUFnQjs7RUFFbEI7OztFQUNBO0lBQ0UsY0FBYztFQUNoQjs7O0VBQ0E7SUFDRSxlQUFlO0VBQ2pCIiwiZmlsZSI6InNyYy9hcHAvbWFpbi9yZWdpc3Rlci9yZWdpc3Rlci5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiYm9keSB7XHJcbiAgICBmb250LWZhbWlseTogQXJpYWwsIEhlbHZldGljYSwgc2Fucy1zZXJpZjtcclxuICB9XHJcblxyXG4gXHJcbiAgaW5wdXQsXHJcbi5idG4ge1xyXG4gIHdpZHRoOiAxMDAlO1xyXG4gIHBhZGRpbmc6IDEycHg7XHJcbiAgYm9yZGVyOiBub25lO1xyXG4gIGJvcmRlci1yYWRpdXM6IDRweDtcclxuICBtYXJnaW46IDVweCAwO1xyXG4gIG9wYWNpdHk6IDAuODU7XHJcbiAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xyXG4gIGZvbnQtc2l6ZTogMTdweDtcclxuICBsaW5lLWhlaWdodDogMjBweDtcclxuICB0ZXh0LWRlY29yYXRpb246IG5vbmU7IC8qIHJlbW92ZSB1bmRlcmxpbmUgZnJvbSBhbmNob3JzICovXHJcbn1cclxuLmZiIHtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICMzQjU5OTg7XHJcbiAgICBjb2xvcjogd2hpdGU7XHJcbiAgfVxyXG4gIC5mYjpob3ZlcntcclxuICAgIGJhY2tncm91bmQtY29sb3I6IzNCNTk5ODtcclxuXHJcbiAgfVxyXG4gIC5nb29nbGUge1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjp3aGl0ZTtcclxuICAgIGNvbG9yOmJsYWNrO1xyXG4gICBcclxuXHJcbiAgfVxyXG4gIC5nb29nbGU6aG92ZXJ7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOndoaXRlO1xyXG5cclxuICB9XHJcbiAgaW5wdXRbdHlwZT1zdWJtaXRdIHtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICM0Q0FGNTA7XHJcbiAgICBjb2xvcjogd2hpdGU7XHJcbiAgICBjdXJzb3I6IHBvaW50ZXI7XHJcbiAgfVxyXG4gIGlucHV0W3R5cGU9c3VibWl0XTpob3ZlciB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjNDVhMDQ5O1xyXG4gIH1cclxuICBAbWVkaWEgc2NyZWVuIGFuZCAobWF4LXdpZHRoOiA2NTBweCkge1xyXG4gICAgLmNvbCB7XHJcbiAgICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgICBtYXJnaW4tdG9wOiAwO1xyXG4gICAgfVxyXG4gICAgLyogaGlkZSB0aGUgdmVydGljYWwgbGluZSAqL1xyXG4gICAgLnZsIHtcclxuICAgICAgZGlzcGxheTogbm9uZTtcclxuICAgIH1cclxuICAgIC8qIHNob3cgdGhlIGhpZGRlbiB0ZXh0IG9uIHNtYWxsIHNjcmVlbnMgKi9cclxuICAgIC5oaWRlLW1kLWxnIHtcclxuICAgICAgZGlzcGxheTogYmxvY2s7XHJcbiAgICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgIH1cclxuICB9XHJcbiAgc3Bhbi5kaWdpe1xyXG4gICAgICBjb2xvcjojMDAwMDgwO1xyXG4gIH1cclxuICBzcGFuLnNha3NoYW17XHJcbiAgICAgIGNvbG9yOiNGRjQ1MDA7XHJcblxyXG4gIH1cclxuXHJcblxyXG4gIGJ1dHRvbiB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjNENBRjUwO1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG4gICAgcGFkZGluZzogMTRweCAyMHB4O1xyXG4gICAgbWFyZ2luOiA4cHggMDtcclxuICAgIGJvcmRlcjogbm9uZTtcclxuICAgIGN1cnNvcjogcG9pbnRlcjtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgb3BhY2l0eTogMC45O1xyXG4gIH1cclxuICBcclxuICBidXR0b246aG92ZXIge1xyXG4gICAgb3BhY2l0eToxO1xyXG4gIH1cclxuIFxyXG4gIC5yZW1lbWJlcntcclxuICAgICAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gICAgICBib3R0b206MjVweDtcclxuICAgICAgbGVmdDo2MHB4O1xyXG5cclxuICB9XHJcbiAgLm1hdGNhcmR7XHJcbiAgICBtYXgtd2lkdGg6NDAwcHg7XHJcbiAgICBtYXgtaGVpZ2h0OjYwMHB4O1xyXG4gIH1cclxuXHJcbiAgLm1hdGNhcmRzaWdue1xyXG4gICAgbWF4LXdpZHRoOjYwMHB4O1xyXG4gICAgbWF4LWhlaWdodDo2MDBweDtcclxuXHJcbiAgfVxyXG4gIC5tYXRlcmlhbC1pY29uc3tcclxuICAgIGN1cnNvcjpwb2ludGVyO1xyXG4gIH1cclxuICAuZnVsbHtcclxuICAgIGZvbnQtc2l6ZTogMTJweDtcclxuICB9XHJcbiAgIl19 */"
+
+/***/ }),
+
+/***/ "./src/app/main/register/signup.component.html":
+/*!*****************************************************!*\
+  !*** ./src/app/main/register/signup.component.html ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\r\n<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\">\r\n\r\n<mat-card class=\"matcardsign\">\r\n<div class=\"jumbotron\">\r\n    <div class=\"container\"><i class=\"material-icons\" (click)=\"onNoClick()\">\r\n        clear\r\n        </i>\r\n        <div class=\"row\">\r\n            <div class=\"col-md-8 offset-md-2\">\r\n                <h4>Create an account here...</h4>\r\n                <hr>\r\n\r\n                <form [formGroup]=\"studentsignupform\" (ngSubmit)=\"save()\"  novalidate>\r\n                    <div class=\"form-group\">\r\n                        <a href=\"#\" class=\"fb btn\">\r\n                                <i class=\"fa fa-facebook fa-fw\"></i>Facebook\r\n                               </a>\r\n                              <a href=\"#\" class=\"google btn\"  ><img src=\"https://img.icons8.com/color/48/000000/google-logo.png\" height=\"20px\" width=\"20px\"> Google\r\n                                </a>\r\n                                </div>\r\n                    <div class=\"form-group\">\r\n\r\n                        <input type=\"text\" class=\"form-control\" formControlName=\"fullname\" placeholder=\"Full Name\" [ngClass]=\"{ 'is-invalid': submitted && f.fullname.errors }\" required />\r\n                        <div *ngIf=\"submitted && f.fullname.errors\" class=\"invalid-feedback\">\r\n                          <div *ngIf=\"f.fullname.errors.required\">First Name is required</div>\r\n                      </div>\r\n\r\n                      </div>\r\n                    <div class=\"form-group\">\r\n\r\n                        <input type=\"text\" class=\"form-control\" formControlName=\"phoneno\" placeholder=\"Phone Number\" [ngClass]=\"{ 'is-invalid': submitted && f.phoneno.errors }\"  required />\r\n                        <div *ngIf=\"submitted && f.phoneno.errors\" class=\"invalid-feedback\">\r\n                          <div *ngIf=\"f.phoneno.errors.required\">Phone no. is required</div>\r\n                      </div>\r\n                    </div>\r\n                    <div class=\"form-group\">\r\n\r\n                        <input type=\"text\" class=\"form-control\" formControlName=\"email\" placeholder=\"Email\"  pattern=\"[^ @]*@[^ @]*\" [ngClass]=\"{ 'is-invalid': submitted && f.email.errors }\" required email />\r\n                        <div *ngIf=\"submitted && f.email.errors\" class=\"invalid-feedback\">\r\n                          <div *ngIf=\"f.email.errors.required\">Email is required</div>\r\n                          <div *ngIf=\"f.email.errors.email\">Email must be a valid email address</div>\r\n                      </div>\r\n                    </div>\r\n                <div class=\"from-group\">\r\n\r\n                    <input type=\"password\" class=\"form-control\" formControlName=\"password\" placeholder=\"Password\" minlength=\"8\"  [ngClass]=\"{ 'is-invalid': submitted && f.password.errors }\" required>\r\n                    <div *ngIf=\"submitted && f.password.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.password.errors.required\">Password is required</div>\r\n                      <div *ngIf=\"f.password.errors.minlength\">Password must be at least 6 characters</div>\r\n                  </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n\r\n                    <input type=\"password\" class=\"form-control\" formControlName=\"passwordconfirm\" placeholder=\"Confirm Password\"  compare=\"password\" [ngClass]=\"{ 'is-invalid': submitted && f.passwordconfirm.errors }\"required>\r\n                    <div *ngIf=\"submitted && f.passwordconfirm.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.passwordconfirm.errors.required\">Confirm Password is required</div>\r\n                      <div *ngIf=\"f.passwordconfirm.errors.mustMatch\">Passwords must match</div>\r\n                  </div>\r\n\r\n                </div>\r\n                    <div class=\"form-group\">\r\n                        <button class=\"btn btn-primary\" [disabled]=\"!studentsignupform\">Register</button>\r\n                    </div>\r\n                </form>\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n</div>\r\n</mat-card>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/main/shared/compare-validator.directive.ts":
+/*!************************************************************!*\
+  !*** ./src/app/main/shared/compare-validator.directive.ts ***!
+  \************************************************************/
+/*! exports provided: CompareValidatorDirective */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CompareValidatorDirective", function() { return CompareValidatorDirective; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+
+
+
+var CompareValidatorDirective = /** @class */ (function () {
+    function CompareValidatorDirective() {
+    }
+    CompareValidatorDirective_1 = CompareValidatorDirective;
+    CompareValidatorDirective.prototype.validate = function (c) {
+        var controlToCompare = c.root.get(this.controlNameToCompare);
+        if (controlToCompare) {
+            var subscription_1 = controlToCompare.valueChanges.subscribe(function () {
+                c.updateValueAndValidity();
+                subscription_1.unsubscribe();
+            });
+        }
+        return controlToCompare && controlToCompare.value !== c.value ? { 'compare': true } : null;
+    };
+    var CompareValidatorDirective_1;
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])('compare'),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+    ], CompareValidatorDirective.prototype, "controlNameToCompare", void 0);
+    CompareValidatorDirective = CompareValidatorDirective_1 = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Directive"])({
+            selector: '[compare]',
+            providers: [{ provide: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["NG_VALIDATORS"], useExisting: CompareValidatorDirective_1, multi: true }]
+        })
+    ], CompareValidatorDirective);
+    return CompareValidatorDirective;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/main/start.component.css":
+/*!******************************************!*\
+  !*** ./src/app/main/start.component.css ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\r\n@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);\r\n.navbar{\r\n    width:auto;\r\n    box-shadow: 0 8px 6px -6px black;\r\n    width:100%;\r\n\r\n\r\n}\r\n.navbar-brand {\r\n    position: relative;\r\n    background: url(/assets/image/logo.png);\r\n   min-width:200px;\r\n    height:40px;\r\n    left: 15px;\r\n    background-size: contain;\r\n    background-repeat: no-repeat;\r\n}\r\na{\r\n    text-decoration: none;\r\n    width:auto;\r\n}\r\nli{\r\n    padding-left: 50px;\r\n}\r\n#nav-link{\r\n    display: inline;\r\n    color:black;\r\n    font-size: 16px;\r\n   position: relative;\r\n   top:10px;\r\n    font-family:Roboto;\r\n    text-decoration: none;\r\n}\r\n/**Center part**/\r\n.image{\r\n    height:35em; background-size:cover; width:auto;\r\n    background-image:url('/assets/image/bg.jpg');\r\n    background-position:50% 50%;\r\n  }\r\n/**************abnbsn********/\r\n.dropdown-menu{\r\n    width:800px;\r\n  }\r\n/*8888888*****/\r\nbody {\r\n  font-family: 'Open Sans', 'sans-serif';\r\n  background: #f0f0f0;\r\n  background: url(https://pcbx.us/bfjb.jpg);\r\n}\r\nh1,\r\n.h1 {\r\n  font-size: 36px;\r\n  text-align: center;\r\n  font-size: 5em;\r\n  color: #404041;\r\n}\r\n.navbar-nav>li>.dropdown-menu {\r\n  margin-top: 20px;\r\n  border-top-left-radius: 4px;\r\n  border-top-right-radius: 4px;\r\n}\r\n.navbar-default .navbar-nav>li>a {\r\n  width: 200px;\r\n  font-weight: bold;\r\n}\r\n.mega-dropdown {\r\n  position: static !important;\r\n  width: 100%;\r\n}\r\n.mega-dropdown-menu {\r\n  padding: 20px 0px;\r\n  width: 100%;\r\n  box-shadow: none;\r\n  -webkit-box-shadow: none;\r\n}\r\n.mega-dropdown-menu:before {\r\n  content: \"\";\r\n  border-bottom: 15px solid #fff;\r\n  border-right: 17px solid transparent;\r\n  border-left: 17px solid transparent;\r\n  position: relative;\r\n  top: -15px;\r\n  left: 285px;\r\n  z-index: 10;\r\n}\r\n.mega-dropdown-menu:after {\r\n  content: \"\";\r\n  border-bottom: 17px solid #ccc;\r\n  border-right: 19px solid transparent;\r\n  border-left: 19px solid transparent;\r\n  position: absolute;\r\n  top: -17px;\r\n  left:680px;\r\n  z-index: 8;\r\n}\r\n.mega-dropdown-menu > li > ul {\r\n  padding: 0;\r\n  margin: 0;\r\n}\r\n.mega-dropdown-menu > li > ul > li {\r\n  list-style: none;\r\n}\r\n.mega-dropdown-menu > li > ul > li > a {\r\n  display: block;\r\n  padding: 3px 20px;\r\n  clear: both;\r\n  font-weight: normal;\r\n  line-height: 1.428571429;\r\n  color: #999;\r\n  white-space: normal;\r\n}\r\n.mega-dropdown-menu > li ul > li > a:hover,\r\n.mega-dropdown-menu > li ul > li > a:focus {\r\n  text-decoration: none;\r\n  color: #444;\r\n  background-color: #f5f5f5;\r\n}\r\n.mega-dropdown-menu .dropdown-header {\r\n  color:black;\r\n  font-size: 16px;\r\n  font-weight: bold;\r\n}\r\n.mega-dropdown-menu form {\r\n  margin: 3px 20px;\r\n}\r\n.mega-dropdown-menu .form-group {\r\n  margin-bottom: 3px;\r\n}\r\n.dropdown-toggle:hover{\r\n  background-color:black;\r\n opacity:0.7\r\n}\r\na.login-btn{\r\n  position: relative;\r\n  left:60px;\r\n  min-width:150px;\r\n}\r\na.signup-btn{\r\n  position: relative;\r\n  left:60px;\r\n  min-width:150px;\r\n}\r\n\r\n\r\n\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbWFpbi9zdGFydC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFDQSxxRUFBcUU7QUFDckU7SUFDSSxVQUFVO0lBQ1YsZ0NBQWdDO0lBQ2hDLFVBQVU7OztBQUdkO0FBQ0E7SUFDSSxrQkFBa0I7SUFDbEIsdUNBQXVDO0dBQ3hDLGVBQWU7SUFDZCxXQUFXO0lBQ1gsVUFBVTtJQUNWLHdCQUF3QjtJQUN4Qiw0QkFBNEI7QUFDaEM7QUFDQTtJQUNJLHFCQUFxQjtJQUNyQixVQUFVO0FBQ2Q7QUFDQTtJQUNJLGtCQUFrQjtBQUN0QjtBQUNBO0lBQ0ksZUFBZTtJQUNmLFdBQVc7SUFDWCxlQUFlO0dBQ2hCLGtCQUFrQjtHQUNsQixRQUFRO0lBQ1Asa0JBQWtCO0lBQ2xCLHFCQUFxQjtBQUN6QjtBQUNBLGdCQUFnQjtBQUNoQjtJQUNJLFdBQVcsRUFBRSxxQkFBcUIsRUFBRSxVQUFVO0lBQzlDLDRDQUE0QztJQUM1QywyQkFBMkI7RUFDN0I7QUFFQSw2QkFBNkI7QUFDN0I7SUFDRSxXQUFXO0VBQ2I7QUFDRixjQUFjO0FBR2Q7RUFDRSxzQ0FBc0M7RUFDdEMsbUJBQW1CO0VBQ25CLHlDQUF5QztBQUMzQztBQUVBOztFQUVFLGVBQWU7RUFDZixrQkFBa0I7RUFDbEIsY0FBYztFQUNkLGNBQWM7QUFDaEI7QUFFQTtFQUNFLGdCQUFnQjtFQUNoQiwyQkFBMkI7RUFDM0IsNEJBQTRCO0FBQzlCO0FBRUE7RUFDRSxZQUFZO0VBQ1osaUJBQWlCO0FBQ25CO0FBRUE7RUFDRSwyQkFBMkI7RUFDM0IsV0FBVztBQUNiO0FBRUE7RUFDRSxpQkFBaUI7RUFDakIsV0FBVztFQUNYLGdCQUFnQjtFQUNoQix3QkFBd0I7QUFDMUI7QUFFQTtFQUNFLFdBQVc7RUFDWCw4QkFBOEI7RUFDOUIsb0NBQW9DO0VBQ3BDLG1DQUFtQztFQUNuQyxrQkFBa0I7RUFDbEIsVUFBVTtFQUNWLFdBQVc7RUFDWCxXQUFXO0FBQ2I7QUFFQTtFQUNFLFdBQVc7RUFDWCw4QkFBOEI7RUFDOUIsb0NBQW9DO0VBQ3BDLG1DQUFtQztFQUNuQyxrQkFBa0I7RUFDbEIsVUFBVTtFQUNWLFVBQVU7RUFDVixVQUFVO0FBQ1o7QUFFQTtFQUNFLFVBQVU7RUFDVixTQUFTO0FBQ1g7QUFFQTtFQUNFLGdCQUFnQjtBQUNsQjtBQUVBO0VBQ0UsY0FBYztFQUNkLGlCQUFpQjtFQUNqQixXQUFXO0VBQ1gsbUJBQW1CO0VBQ25CLHdCQUF3QjtFQUN4QixXQUFXO0VBQ1gsbUJBQW1CO0FBQ3JCO0FBRUE7O0VBRUUscUJBQXFCO0VBQ3JCLFdBQVc7RUFDWCx5QkFBeUI7QUFDM0I7QUFFQTtFQUNFLFdBQVc7RUFDWCxlQUFlO0VBQ2YsaUJBQWlCO0FBQ25CO0FBRUE7RUFDRSxnQkFBZ0I7QUFDbEI7QUFFQTtFQUNFLGtCQUFrQjtBQUNwQjtBQUNBO0VBQ0Usc0JBQXNCO0NBQ3ZCO0FBQ0Q7QUFFQTtFQUNFLGtCQUFrQjtFQUNsQixTQUFTO0VBQ1QsZUFBZTtBQUNqQjtBQUNBO0VBQ0Usa0JBQWtCO0VBQ2xCLFNBQVM7RUFDVCxlQUFlO0FBQ2pCIiwiZmlsZSI6InNyYy9hcHAvbWFpbi9zdGFydC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiXHJcbkBpbXBvcnQgdXJsKGh0dHA6Ly9mb250cy5nb29nbGVhcGlzLmNvbS9jc3M/ZmFtaWx5PU9wZW4rU2Fuczo0MDAsNzAwKTtcclxuLm5hdmJhcntcclxuICAgIHdpZHRoOmF1dG87XHJcbiAgICBib3gtc2hhZG93OiAwIDhweCA2cHggLTZweCBibGFjaztcclxuICAgIHdpZHRoOjEwMCU7XHJcblxyXG5cclxufVxyXG4ubmF2YmFyLWJyYW5kIHtcclxuICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuICAgIGJhY2tncm91bmQ6IHVybCgvYXNzZXRzL2ltYWdlL2xvZ28ucG5nKTtcclxuICAgbWluLXdpZHRoOjIwMHB4O1xyXG4gICAgaGVpZ2h0OjQwcHg7XHJcbiAgICBsZWZ0OiAxNXB4O1xyXG4gICAgYmFja2dyb3VuZC1zaXplOiBjb250YWluO1xyXG4gICAgYmFja2dyb3VuZC1yZXBlYXQ6IG5vLXJlcGVhdDtcclxufVxyXG5he1xyXG4gICAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xyXG4gICAgd2lkdGg6YXV0bztcclxufVxyXG5saXtcclxuICAgIHBhZGRpbmctbGVmdDogNTBweDtcclxufVxyXG4jbmF2LWxpbmt7XHJcbiAgICBkaXNwbGF5OiBpbmxpbmU7XHJcbiAgICBjb2xvcjpibGFjaztcclxuICAgIGZvbnQtc2l6ZTogMTZweDtcclxuICAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gICB0b3A6MTBweDtcclxuICAgIGZvbnQtZmFtaWx5OlJvYm90bztcclxuICAgIHRleHQtZGVjb3JhdGlvbjogbm9uZTtcclxufVxyXG4vKipDZW50ZXIgcGFydCoqL1xyXG4uaW1hZ2V7XHJcbiAgICBoZWlnaHQ6MzVlbTsgYmFja2dyb3VuZC1zaXplOmNvdmVyOyB3aWR0aDphdXRvO1xyXG4gICAgYmFja2dyb3VuZC1pbWFnZTp1cmwoJy9hc3NldHMvaW1hZ2UvYmcuanBnJyk7XHJcbiAgICBiYWNrZ3JvdW5kLXBvc2l0aW9uOjUwJSA1MCU7XHJcbiAgfVxyXG5cclxuICAvKioqKioqKioqKioqKiphYm5ic24qKioqKioqKi9cclxuICAuZHJvcGRvd24tbWVudXtcclxuICAgIHdpZHRoOjgwMHB4O1xyXG4gIH1cclxuLyo4ODg4ODg4KioqKiovXHJcblxyXG5cclxuYm9keSB7XHJcbiAgZm9udC1mYW1pbHk6ICdPcGVuIFNhbnMnLCAnc2Fucy1zZXJpZic7XHJcbiAgYmFja2dyb3VuZDogI2YwZjBmMDtcclxuICBiYWNrZ3JvdW5kOiB1cmwoaHR0cHM6Ly9wY2J4LnVzL2JmamIuanBnKTtcclxufVxyXG5cclxuaDEsXHJcbi5oMSB7XHJcbiAgZm9udC1zaXplOiAzNnB4O1xyXG4gIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICBmb250LXNpemU6IDVlbTtcclxuICBjb2xvcjogIzQwNDA0MTtcclxufVxyXG5cclxuLm5hdmJhci1uYXY+bGk+LmRyb3Bkb3duLW1lbnUge1xyXG4gIG1hcmdpbi10b3A6IDIwcHg7XHJcbiAgYm9yZGVyLXRvcC1sZWZ0LXJhZGl1czogNHB4O1xyXG4gIGJvcmRlci10b3AtcmlnaHQtcmFkaXVzOiA0cHg7XHJcbn1cclxuXHJcbi5uYXZiYXItZGVmYXVsdCAubmF2YmFyLW5hdj5saT5hIHtcclxuICB3aWR0aDogMjAwcHg7XHJcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbn1cclxuXHJcbi5tZWdhLWRyb3Bkb3duIHtcclxuICBwb3NpdGlvbjogc3RhdGljICFpbXBvcnRhbnQ7XHJcbiAgd2lkdGg6IDEwMCU7XHJcbn1cclxuXHJcbi5tZWdhLWRyb3Bkb3duLW1lbnUge1xyXG4gIHBhZGRpbmc6IDIwcHggMHB4O1xyXG4gIHdpZHRoOiAxMDAlO1xyXG4gIGJveC1zaGFkb3c6IG5vbmU7XHJcbiAgLXdlYmtpdC1ib3gtc2hhZG93OiBub25lO1xyXG59XHJcblxyXG4ubWVnYS1kcm9wZG93bi1tZW51OmJlZm9yZSB7XHJcbiAgY29udGVudDogXCJcIjtcclxuICBib3JkZXItYm90dG9tOiAxNXB4IHNvbGlkICNmZmY7XHJcbiAgYm9yZGVyLXJpZ2h0OiAxN3B4IHNvbGlkIHRyYW5zcGFyZW50O1xyXG4gIGJvcmRlci1sZWZ0OiAxN3B4IHNvbGlkIHRyYW5zcGFyZW50O1xyXG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuICB0b3A6IC0xNXB4O1xyXG4gIGxlZnQ6IDI4NXB4O1xyXG4gIHotaW5kZXg6IDEwO1xyXG59XHJcblxyXG4ubWVnYS1kcm9wZG93bi1tZW51OmFmdGVyIHtcclxuICBjb250ZW50OiBcIlwiO1xyXG4gIGJvcmRlci1ib3R0b206IDE3cHggc29saWQgI2NjYztcclxuICBib3JkZXItcmlnaHQ6IDE5cHggc29saWQgdHJhbnNwYXJlbnQ7XHJcbiAgYm9yZGVyLWxlZnQ6IDE5cHggc29saWQgdHJhbnNwYXJlbnQ7XHJcbiAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gIHRvcDogLTE3cHg7XHJcbiAgbGVmdDo2ODBweDtcclxuICB6LWluZGV4OiA4O1xyXG59XHJcblxyXG4ubWVnYS1kcm9wZG93bi1tZW51ID4gbGkgPiB1bCB7XHJcbiAgcGFkZGluZzogMDtcclxuICBtYXJnaW46IDA7XHJcbn1cclxuXHJcbi5tZWdhLWRyb3Bkb3duLW1lbnUgPiBsaSA+IHVsID4gbGkge1xyXG4gIGxpc3Qtc3R5bGU6IG5vbmU7XHJcbn1cclxuXHJcbi5tZWdhLWRyb3Bkb3duLW1lbnUgPiBsaSA+IHVsID4gbGkgPiBhIHtcclxuICBkaXNwbGF5OiBibG9jaztcclxuICBwYWRkaW5nOiAzcHggMjBweDtcclxuICBjbGVhcjogYm90aDtcclxuICBmb250LXdlaWdodDogbm9ybWFsO1xyXG4gIGxpbmUtaGVpZ2h0OiAxLjQyODU3MTQyOTtcclxuICBjb2xvcjogIzk5OTtcclxuICB3aGl0ZS1zcGFjZTogbm9ybWFsO1xyXG59XHJcblxyXG4ubWVnYS1kcm9wZG93bi1tZW51ID4gbGkgdWwgPiBsaSA+IGE6aG92ZXIsXHJcbi5tZWdhLWRyb3Bkb3duLW1lbnUgPiBsaSB1bCA+IGxpID4gYTpmb2N1cyB7XHJcbiAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xyXG4gIGNvbG9yOiAjNDQ0O1xyXG4gIGJhY2tncm91bmQtY29sb3I6ICNmNWY1ZjU7XHJcbn1cclxuXHJcbi5tZWdhLWRyb3Bkb3duLW1lbnUgLmRyb3Bkb3duLWhlYWRlciB7XHJcbiAgY29sb3I6YmxhY2s7XHJcbiAgZm9udC1zaXplOiAxNnB4O1xyXG4gIGZvbnQtd2VpZ2h0OiBib2xkO1xyXG59XHJcblxyXG4ubWVnYS1kcm9wZG93bi1tZW51IGZvcm0ge1xyXG4gIG1hcmdpbjogM3B4IDIwcHg7XHJcbn1cclxuXHJcbi5tZWdhLWRyb3Bkb3duLW1lbnUgLmZvcm0tZ3JvdXAge1xyXG4gIG1hcmdpbi1ib3R0b206IDNweDtcclxufVxyXG4uZHJvcGRvd24tdG9nZ2xlOmhvdmVye1xyXG4gIGJhY2tncm91bmQtY29sb3I6YmxhY2s7XHJcbiBvcGFjaXR5OjAuN1xyXG59XHJcblxyXG5hLmxvZ2luLWJ0bntcclxuICBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgbGVmdDo2MHB4O1xyXG4gIG1pbi13aWR0aDoxNTBweDtcclxufVxyXG5hLnNpZ251cC1idG57XHJcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gIGxlZnQ6NjBweDtcclxuICBtaW4td2lkdGg6MTUwcHg7XHJcbn1cclxuXHJcblxyXG5cclxuIl19 */"
+
+/***/ }),
+
+/***/ "./src/app/main/start.component.html":
+/*!*******************************************!*\
+  !*** ./src/app/main/start.component.html ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<link href=\"//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css\" rel=\"stylesheet\" id=\"bootstrap-css\">\r\n<script src=\"//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js\"></script>\r\n<script src=\"//code.jquery.com/jquery-1.11.1.min.js\"></script>\r\n<!------ Include the above in your HEAD tag ---------->\r\n<div class=\"container-fluid\">\r\n  <div class=\"row\">\r\n<nav class=\"navbar navbar-expand-lg navbar-light bg-dark\">\r\n    <a class=\"navbar-brand\" href=\"#\"></a>\r\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapsibleNavbar\">\r\n        <span class=\"navbar-toggler-icon\"></span>\r\n      </button>\r\n      <div id=\"collapsibleNavbar\">\r\n     <ul class=\"navbar-nav \">\r\n        <li class=\"nav-item \">\r\n          <a id=\"nav-link\" href=\"#\" style=\"color:white\" routerLink=\"./instructor\">Teach On DigiSaksham</a>\r\n        </li>\r\n         <li class=\"nav-item active\">\r\n       <a href=\"#\" class=\"dropdown-toggle\" id=\"nav-link\" style=\"color:white\" data-toggle=\"dropdown\">Courses on DigiSaksham</a>\r\n\r\n                    <ul class=\"dropdown-menu mega-dropdown-menu row\">\r\n                    <li class=\"col-sm-4\">\r\n                        <ul>\r\n                          <li class=\"dropdown-header\">Digital Marketing</li>\r\n                          <li><a href=\"#\" *ngFor=\"let item of digitalmarketing \">{{item}}</a></li>\r\n\r\n                          <li class=\"divider\"></li>\r\n                          <li class=\"dropdown-header\">Development</li>\r\n                          <li><a href=\"#\" *ngFor=\"let item of  Development \">{{item}}</a></li>\r\n                        </ul>\r\n                      </li>\r\n                      <li class=\"col-sm-4\">\r\n                        <ul>\r\n                          <li class=\"dropdown-header\">Design</li>\r\n                          <li><a href=\"#\" *ngFor=\"let item of Design\">{{item}}</a></li>\r\n\r\n                          <li class=\"divider\"></li>\r\n                          <li class=\"dropdown-header\"> Business</li>\r\n                          <li><a href=\"#\" *ngFor=\"let item of Business\">{{item}}</a></li>\r\n\r\n                        </ul>\r\n                      </li>\r\n                      <li class=\"col-sm-4\">\r\n                        <ul>\r\n                          <li class=\"dropdown-header\">SoftwareQualiity</li>\r\n                          <li><a href=\"#\" *ngFor=\"let item of SoftwareQualiity\">{{item}}</a></li>\r\n\r\n                          <li class=\"divider\"></li>\r\n                          <li class=\"dropdown-header\"> Mathematics</li>\r\n                          <li><a href=\"#\" *ngFor=\"let item of mathematics\">{{item}}</a></li>\r\n\r\n                        </ul>\r\n                      </li>\r\n\r\n                </ul>\r\n </li>\r\n\r\n       </ul>\r\n      <a  class=\"login-btn\" mat-raised-button (click)=\" openLoginDialog()\"><b>LogIn</b></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\r\n      <a class=\"signup-btn\" mat-raised-button color=\"warn\" (click)=\"openSignupDialog()\"><b>Sign Up</b></a>\r\n    </div>\r\n       </nav>\r\n      </div>\r\n    </div>\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n       <router-outlet></router-outlet>\r\n\r\n\r\n"
+
+/***/ }),
+
+/***/ "./src/app/main/start.component.ts":
+/*!*****************************************!*\
+  !*** ./src/app/main/start.component.ts ***!
+  \*****************************************/
+/*! exports provided: StartComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StartComponent", function() { return StartComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_material_dialog__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material/dialog */ "./node_modules/@angular/material/esm5/dialog.es5.js");
+/* harmony import */ var _main_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./main.component */ "./src/app/main/main.component.ts");
+
+
+
+
+var StartComponent = /** @class */ (function () {
+    function StartComponent(dialog) {
+        this.dialog = dialog;
+        // tslint:disable-next-line: member-ordering
+        this.digitalmarketing = ['Digital Marketing', 'Google Marketing', 'FB Marketing', 'SMM', 'SEM', 'SEO', 'Content Marketing'];
+        // tslint:disable-next-line: member-ordering
+        this.Development = ['Development', 'Java Technology', 'Computer Programing', 'Web Development', 'Scripts', 'Big Data Techniques', 'SAP'];
+        // tslint:disable-next-line: member-ordering
+        this.Design = ['Design', 'Photoshop', 'logo design', '3D Design', 'Coral Drwaing', 'Crash Course electronic and PCB design'];
+        // tslint:disable-next-line: member-ordering
+        // tslint:disable-next-line: member-ordering
+        this.Business = ['Business', 'PROBE', 'The Complete Financial Analyst Course 2019', 'Complete investment banking', 'financial analyst', 'Product Manager'];
+        // tslint:disable-next-line: member-ordering
+        // tslint:disable-next-line: max-line-length
+        this.SoftwareQualiity = [' SoftwareQualiity', 'Desktop Security Awareness', 'Malicious  Application Awareness', 'Online thread Awareness', 'Ethical Hacking', 'Mobile Security'];
+        // tslint:disable-next-line: member-ordering
+        this.mathematics = ['mathematics', 'Vedic Mathematics', 'Basic Elementary Mathematics', 'Alzebra'];
+    }
+    StartComponent.prototype.openLoginDialog = function () {
+        var dialogRef = this.dialog.open(_main_component__WEBPACK_IMPORTED_MODULE_3__["LoginComponent"], {});
+    };
+    StartComponent.prototype.openSignupDialog = function () {
+        var dialogRef = this.dialog.open(_main_component__WEBPACK_IMPORTED_MODULE_3__["SignupComponent"], {});
+    };
+    StartComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            // tslint:disable-next-line: component-selector
+            selector: 'start',
+            template: __webpack_require__(/*! ./start.component.html */ "./src/app/main/start.component.html"),
+            styles: [__webpack_require__(/*! ./start.component.css */ "./src/app/main/start.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_material_dialog__WEBPACK_IMPORTED_MODULE_2__["MatDialog"]])
+    ], StartComponent);
+    return StartComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/main/user.model.ts":
+/*!************************************!*\
+  !*** ./src/app/main/user.model.ts ***!
+  \************************************/
+/*! exports provided: User */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "User", function() { return User; });
+var User = /** @class */ (function () {
+    function User() {
+    }
+    return User;
+}());
+
+
+
+/***/ })
+
+}]);
+//# sourceMappingURL=src-app-main-main-module.js.map

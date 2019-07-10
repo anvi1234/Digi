@@ -1,0 +1,43 @@
+mat-card{
+    max-height:700px;
+    max-width:400px;
+    padding-right:20px;
+
+    position:relative;
+    top:60px;
+    left:40px;
+}
+
+input[type="file"]{
+background-color:"red";
+}
+
+
+body{
+    background-color:white;
+    min-height: 550px;
+    width:auto;
+    position: relative;
+
+
+}
+
+form{
+   position: relative;
+   left:30px;
+   top:40px;
+}
+
+.form-control{
+  max-width:60%;
+  padding-top: 10px;
+}
+
+#upload{
+  min-width:60%;
+}
+
+#file{
+  width:800px;
+  height:800px;
+}

@@ -1,0 +1,11 @@
+<body>
+    <div id="myDIV" class="header">
+
+        <h2 style="margin:5px">My To Do List</h2>
+       <form [formGroup]="todoForm" (ngSubmit)="add()">
+           <input type="text" formControlName="title" id="myInput">
+           <input type="submit" class="addBtn" value="Add" [disabled]="todoForm.invalid">
+       </form>
+
+
+    </div>

@@ -1,0 +1,55 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<mat-sidenav-container class="sidenav-container" *ngFor="let item of user">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="!(isHandset$ | async)">
+    <mat-toolbar style="background:black"> <a class="navbar-brand" href="#"></a></mat-toolbar>
+
+
+
+    <mat-nav-list>
+        <form [formGroup]="profileform">
+            <div class="row">
+              <div class="col-sm-4 offset-sm-2" >
+ <button mat-stroked-button color="primary"  routerLink="./uploadvideo" > Add Course Heading</button>
+
+             <div formArrayName="addmodule">
+
+             <div *ngFor="let item of companies">
+               <h4></h4>
+
+
+
+
+        </div>
+            </div>
+
+   </div>
+   </div>
+   </form>
+    </mat-nav-list>
+
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar>
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+
+
+      </button>
+
+      <span class="left" style="color:white">Hello! <span class="name" style="color:white">{{item.email}}</span></span>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,68 @@
+<link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+
+<div class="row">
+<div class="container-fluid">
+    <div class="image">
+        <div class="hero text text-white text-left">
+            <h2 style="font-family: Arial, Helvetica, sans-serif;padding-top:100px;margin-left:100px ;">Make a global impact</h2>
+            <p style="padding-left:100px">Create an online video course and earn money by teaching <br>people around the world.</p>
+
+        </div>
+        <div class="row">
+                <div class="col-md-4 col-lg-2">
+                  <button class="btn btn-danger" (click)=" openLoginDialog()">Become an instructor</button>
+                </div>
+              </div>
+    </div>
+  </div>
+
+</div>
+<body>
+    <div class="container" >
+        <div class="text-center" id="potential">Discover Your potential</div>
+
+        <div class="row">
+            <div class="col-lg-4" >
+                    <img src="https://img.icons8.com/ios/50/000000/money-box.png"  height="60px" width="50px">
+                    <div class="text-center">Earn money</div>
+                    <div class="text-center">Earn money every time a student purchases your course.Get paid monthly through PayPal or Payoneer, it’s your choice.</div>
+            </div>
+            <div class="col-lg-4">
+                    <img src="https://img.icons8.com/ios/24/000000/video-playlist.png" height="60px" width="50px">
+                    <div class="text-center">Inspire students</div>
+                    <div class="text-center">Help people learn new skills, advance their careers, and explore their hobbies by sharing your knowledge.</div>
+                 </div>
+                 <div class="col-lg-4">
+                        <img src="https://img.icons8.com/ios/50/000000/facebook-like.png" height="60px" width="50px">
+                        <div class="text-center">Join our community</div>
+                        <div class="text-center">Take advantage of our active community of instructors to help you through your course creation process.</div>
+                     </div>
+
+        </div>
+
+        <div class="text-center" id="potential">Evision your success</div>
+
+              <mat-horizontal-stepper [linear]="isLinear" #stepper>
+                    <i class="fa fa-arrow-circle-left custom" ></i>
+                  <mat-step>
+
+                    <ng-template matStepLabel>Plan your course</ng-template>
+                    <h4>Plan your course</h4>
+                  </mat-step>
+
+                  <mat-step >
+                        <ng-template matStepLabel>Record your video</ng-template>
+                    Content 2
+                  </mat-step>
+
+                  <mat-step>
+                        <ng-template matStepLabel>   <img src="https://img.icons8.com/dotty/80/000000/filled-chat.png">Build your community
+                            </ng-template>
+                        Content 1
+                      </mat-step>
+
+
+              </mat-horizontal-stepper>
+
+    </div>
+</body>

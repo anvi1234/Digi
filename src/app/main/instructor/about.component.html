@@ -1,0 +1,40 @@
+
+<body>
+    <div class="img-fluid img" >
+        <mat-card class="about-matcard">
+            <form  [formGroup]="profileform" (ngSubmit)="add()">
+<h4>Tell Us about Yourself</h4><hr>
+
+   <div class="about-info"> Are you already teaching online?<br>
+   <select   formControlName="teachingonline" required>
+
+       <option *ngFor="let item of teachingonline"  [value]="item.teachingid" >
+           {{item.teachingname}}</option>
+   </select>
+
+</div>
+<div  class="about-info">Do you already have a following and/or an email list built around your topic?<br>
+   <select  formControlName="havefollowing" ng-model="selected" ng-init="selected = arr[1]" required>
+       <option *ngFor="let item of havefollowing"   [value]="item.followingId">{{item.followingname}}</option>
+   </select></div>
+
+ <div  class="about-info">  How much training material have you already produced?<br>
+    (slide decks, training guides, books, blog posts, videos, PDF's etc)
+    <br><select   formControlName="trainningmaterial" required>
+        <option *ngFor="let item of trainningmaterial "  [value]="item.materialId">{{item.materialname}}</option>
+    </select></div>
+
+  <div  class="about-info"> Would you identify yourself as:<br>
+    <select   formControlName="identify" required>
+        <option *ngFor="let item of identify"   [value]="item.identifyid">{{item.identifyname}}</option>
+    </select>
+
+
+</div>
+
+  <button class="submit-btn"mat-raised-button routerLink="./dashboard" type="submit">Continue</button>
+</form>
+</mat-card>
+
+</div>
+</body>
