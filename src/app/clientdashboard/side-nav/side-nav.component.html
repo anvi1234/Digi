@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
-<mat-sidenav-container class="sidenav-container" *ngFor="let item of user">
+<mat-sidenav-container class="sidenav-container"  *ngFor="let item of user">
   <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
@@ -12,30 +12,27 @@
 
 
     <mat-nav-list>
+ 
         <form [formGroup]="profileform">
             <div class="row">
               <div class="col-sm-4 offset-sm-2" >
  <button mat-stroked-button color="primary"  routerLink="./uploadvideo" > Add Course Heading</button>
-
-             <div formArrayName="addmodule">
-
-             <div *ngFor="let item of companies">
-               <h4></h4>
+ <ul>
+   <li>{{item.companies.coursemodule[i]}}</li>
+   </ul>
 
 
-
-
-        </div>
-            </div>
-
+           
    </div>
    </div>
    </form>
+   
+
     </mat-nav-list>
 
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar>
+    <mat-toolbar >
       <button
         type="button"
         aria-label="Toggle sidenav"

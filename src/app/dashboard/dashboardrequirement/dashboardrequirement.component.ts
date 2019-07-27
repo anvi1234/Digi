@@ -106,19 +106,11 @@ export class DashboardRequirement implements OnInit {
     // tslint:disable-next-line: prefer-const
     let userInfo = JSON.parse(sessionStorage.getItem('totoList'));
     this.service.UserData(userInfo).subscribe(x => {
-      if (x.userResponse.message == 'success') {
-        this.service.addData(userInfo).subscribe(y => {
-          this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
-          this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
-            console.log('ImageUpload:uploaded:', item, status, response);
-            alert('File uploaded successfully');
-            alert("suscceful submission,we will send you verification email");
-          }
-        });
-      }
-    });
-  }
+        return x;     
 
+});
+  }
+  
 
   ngOnInit() {
     this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };

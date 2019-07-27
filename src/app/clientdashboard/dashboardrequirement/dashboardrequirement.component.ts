@@ -143,6 +143,11 @@ export class DashboardRequirement implements OnInit {
       return x;
     });
   }
+
+
+  saved(){
+    console.log(JSON.stringify(this.myForm.value));
+  }
     handleFileInput(event) {
     if (event.target.files && event.target.files[0]) {
       var reader = new FileReader();

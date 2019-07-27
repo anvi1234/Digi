@@ -61,7 +61,8 @@ footer{
 }
 .footer-bottom {
 	overflow: hidden;
-	background: #edf4f6;
+	background: black;
+	opacity: 0.8;
   padding: 20px 0;
   position: relative;
 
@@ -105,10 +106,10 @@ footer{
 
 .copyright {
 	padding-top: 3px;
-	float: left;
+  text-align: center;
 	font-size: 14px;
 	font-weight: 600;
-  color: #474747;
+  color:white;
 
 }
 
